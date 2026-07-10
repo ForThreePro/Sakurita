@@ -17,25 +17,75 @@ handler.before = async function (m, { conn, groupMetadata }) {
 
     switch (m.messageStubType) {
         case 21: // Cambiar nombre
-            txt = `⛈️ *RAYO PREM DETECTOR* 🌙\n\n⚡ ${usuario} *cambió el nombre del grupo*\n\n📝 *Nuevo:* _${m.messageStubParameters[0]}_\n🌩️ *Grupo:* ${group}`; break
+            txt = `⛈️ *¡ALERTA RAYO PREM!* ⚡🌩️\n\n` +
+                  `📢 *¡ATENCIÓN GRUPO!*\n` +
+                  `${usuario} *HA CAMBIADO EL NOMBRE* 💥\n\n` +
+                  `📝 *Nuevo Nombre:* _${m.messageStubParameters[0]}_\n` +
+                  `🌩️ *Lugar:* ${group}\n\n` +
+                  `> "El trueno ha hablado" ⚡`; break
+
         case 22: // Cambiar foto
-            txt = `⛈️ *RAYO PREM DETECTOR* 🌙\n\n📸 ${usuario} *cambió la foto del grupo*\n\n🌩️ *Grupo:* ${group}`; break
+            txt = `⛈️ *¡RAYO PREM INFORMA!* ⚡📸\n\n` +
+                  `🖼️ *¡NUEVA IMAGEN DETECTADA!*\n` +
+                  `${usuario} *HA RENOVADO LA FOTO DEL GRUPO* ✨\n\n` +
+                  `🌩️ *Grupo:* ${group}\n\n` +
+                  `> "Que brille con la fuerza del rayo" ⚡`; break
+
         case 23: // Cambiar link
-            txt = `⛈️ *RAYO PREM DETECTOR* 🌙\n\n🔗 ${usuario} *restableció el link del grupo*\n\n🌩️ *Grupo:* ${group}`; break
+            txt = `⛈️ *¡CUIDADO!* ⚡🔗\n\n` +
+                  `🚨 *¡LINK RESETEADO!*\n` +
+                  `${usuario} *HA CAMBIADO EL ENLACE DEL GRUPO* 💣\n\n` +
+                  `🌩️ *Grupo:* ${group}\n\n` +
+                  `> "El portal ha sido alterado" ⚡`; break
+
         case 25: // Cambiar ajustes
-            txt = `⛈️ *RAYO PREM DETECTOR* 🌙\n\n⚙️ ${usuario} *cambió la configuración*\n\n🔒 Ahora *${m.messageStubParameters[0] == 'on'? 'solo admins': 'todos'}* pueden editar info`; break
+            txt = `⛈️ *¡SISTEMA MODIFICADO!* ⚡⚙️\n` +
+                  `🔐 *¡CONFIGURACIÓN ALTERADA!*\n` +
+                  `${usuario} *HA CAMBIADO LOS PERMISOS* 🛡️\n\n` +
+                  `📊 *Estado:* ${m.messageStubParameters[0] == 'on'? '*SOLO ADMINS* 🔒' : '*TODOS* 🔓'} pueden editar info\n` +
+                  `> "El control está en nuevas manos" ⚡`; break
+
         case 26: // Abrir/Cerrar
-            txt = `⛈️ *RAYO PREM DETECTOR* 🌙\n\n🗣️ ${usuario} *${m.messageStubParameters[0] == 'on'? 'cerró': 'abrió'} el grupo*\n\n💬 Ahora *${m.messageStubParameters[0] == 'on'? 'solo admins': 'todos'}* pueden escribir`; break
+            txt = `⛈️ *¡ESTADO DEL GRUPO!* ⚡🗣️\n\n` +
+                  `📢 *¡GRUPO ${m.messageStubParameters[0] == 'on'? 'CERRADO' : 'ABIERTO'}!*\n` +
+                  `${usuario} *HA ${m.messageStubParameters[0] == 'on'? 'SELLADO' : 'LIBERADO'} EL CHAT* 🌩️\n\n` +
+                  `💬 *Ahora:* ${m.messageStubParameters[0] == 'on'? '*SOLO ADMINS* pueden hablar' : '*TODOS* pueden hablar'}\n\n` +
+                  `> "Que se escuche el trueno" ⚡`; break
+
         case 29: // Dar admin
-            txt = `⛈️ *RAYO PREM DETECTOR* 🌙\n\n👑 @${m.messageStubParameters[0].split('@')[0]} *ahora es ADMIN*\n\n⚡ *Por:* ${usuario}`; break
+            txt = `⛈️ *¡ASCENSO DIVINO!* ⚡👑\n\n` +
+                  `🌟 *¡NUEVO ADMIN EN EL TRONO!*\n` +
+                  `@${m.messageStubParameters[0].split('@')[0]} *HA SIDO CORONADO ADMIN* ⚡\n\n` +
+                  `⚡ *Por orden de:* ${usuario}\n\n` +
+                  `> "Que gobierne con poder" ⚡`; break
+
         case 30: // Quitar admin
-            txt = `⛈️ *RAYO PREM DETECTOR* 🌙\n\n📉 @${m.messageStubParameters[0].split('@')[0]} *ya no es ADMIN*\n\n⚡ *Por:* ${usuario}`; break
+            txt = `⛈️ *¡DESTITUCIÓN!* ⚡📉\n\n` +
+                  `💥 *¡ADMIN CAÍDO!*\n` +
+                  `@${m.messageStubParameters[0].split('@')[0]} *HA PERDIDO SUS PODERES* 🗑️\n\n` +
+                  `⚡ *Por orden de:* ${usuario}\n\n` +
+                  `> "El rayo no perdona" ⚡`; break
+
         case WAMessageStubType.GROUP_PARTICIPANT_ADD:
-            txt = `⛈️ *RAYO PREM DETECTOR* 🌙\n\n🌩️ @${m.messageStubParameters[0].split('@')[0]} *se unió al grupo*\n\n🌩️ *Grupo:* ${group}`; break
+            txt = `⛈️ *¡NUEVO GUERRERO!* ⚡🌩️\n\n` +
+                  `🔥 *¡ALERTA DE INGRESO!*\n` +
+                  `@${m.messageStubParameters[0].split('@')[0]} *HA ENTRADO AL GRUPO* 💥\n\n` +
+                  `🌩️ *Grupo:* ${group}\n\n` +
+                  `> "Bienvenido... o prepárate" ⚡`; break
+
         case WAMessageStubType.GROUP_PARTICIPANT_LEAVE:
-            txt = `⛈️ *RAYO PREM DETECTOR* 🌙\n\n💨 @${m.messageStubParameters[0].split('@')[0]} *salió del grupo*\n\n🌩️ *Grupo:* ${group}`; break
+            txt = `⛈️ *¡BAJA CONFIRMADA!* ⚡💨\n\n` +
+                  `😔 *¡ALGUIEN SE FUE!*\n` +
+                  `@${m.messageStubParameters[0].split('@')[0]} *HA ABANDONADO EL GRUPO* 🌫️\n\n` +
+                  `🌩️ *Grupo:* ${group}\n\n` +
+                  `> "Que los vientos lo acompañen" ⚡`; break
+
         case WAMessageStubType.GROUP_PARTICIPANT_REMOVE:
-            txt = `⛈️ *RAYO PREM DETECTOR* 🌙\n\n🚮 @${m.messageStubParameters[0].split('@')[0]} *fue expulsado*\n\n⚡ *Por:* ${usuario}`; break
+            txt = `⛈️ *¡EXPULSIÓN EJECUTADA!* ⚡🚮\n\n` +
+                  `💣 *¡ACCESO DENEGADO!*\n` +
+                  `@${m.messageStubParameters[0].split('@')[0]} *HA SIDO ELIMINADO* 🔥\n\n` +
+                  `⚡ *Por orden de:* ${usuario}\n\n` +
+                  `> "El trueno ha juzgado" ⚡`; break
     }
 
     if (txt) {
