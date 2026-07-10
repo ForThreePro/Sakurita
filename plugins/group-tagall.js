@@ -5,7 +5,7 @@ const handler = async (m, { isOwner, isAdmin, conn, participants, args }) => {
       return;
     }
 
-    const customMessage = args.join(' ') || '📢 Invocación general';
+    const customMessage = args.join(' ') || '⛈️ Invocación RAYO PREM';
     const groupMetadata = await conn.groupMetadata(m.chat).catch(() => ({ subject: 'Grupo', participants: [] }));
     const groupName = groupMetadata.subject;
 
@@ -16,18 +16,18 @@ const handler = async (m, { isOwner, isAdmin, conn, participants, args }) => {
       { prefijo: '506', bandera: '🇨🇷' }, { prefijo: '507', bandera: '🇵🇦' },
       { prefijo: '591', bandera: '🇧🇴' }, { prefijo: '592', bandera: '🇬🇾' },
       { prefijo: '593', bandera: '🇪🇨' }, { prefijo: '595', bandera: '🇵🇾' },
-      { prefijo: '598', bandera: '🇺🇾' }, { prefijo: '58',  bandera: '🇻🇪' },
-      { prefijo: '52',  bandera: '🇲🇽' }, { prefijo: '54',  bandera: '🇦🇷' },
-      { prefijo: '57',  bandera: '🇨🇴' }, { prefijo: '51',  bandera: '🇵🇪' },
-      { prefijo: '56',  bandera: '🇨🇱' }, { prefijo: '55',  bandera: '🇧🇷' },
-      { prefijo: '34',  bandera: '🇪🇸' }, { prefijo: '44',  bandera: '🇬🇧' },
-      { prefijo: '33',  bandera: '🇫🇷' }, { prefijo: '49',  bandera: '🇩🇪' },
-      { prefijo: '39',  bandera: '🇮🇹' }, { prefijo: '81',  bandera: '🇯🇵' },
-      { prefijo: '82',  bandera: '🇰🇷' }, { prefijo: '86',  bandera: '🇨🇳' },
-      { prefijo: '91',  bandera: '🇮🇳' }, { prefijo: '61',  bandera: '🇦🇺' },
-      { prefijo: '64',  bandera: '🇳🇿' }, { prefijo: '1',   bandera: '🇺🇸' },
-      { prefijo: '7',   bandera: '🇷🇺' }, { prefijo: '63',  bandera: '🇵🇭' }, 
-      { prefijo: '95',  bandera: '🇲🇲' }
+      { prefijo: '598', bandera: '🇺🇾' }, { prefijo: '58', bandera: '🇻🇪' },
+      { prefijo: '52', bandera: '🇲🇽' }, { prefijo: '54', bandera: '🇦🇷' },
+      { prefijo: '57', bandera: '🇨🇴' }, { prefijo: '51', bandera: '🇵🇪' },
+      { prefijo: '56', bandera: '🇨🇱' }, { prefijo: '55', bandera: '🇧🇷' },
+      { prefijo: '34', bandera: '🇪🇸' }, { prefijo: '44', bandera: '🇬🇧' },
+      { prefijo: '33', bandera: '🇫🇷' }, { prefijo: '49', bandera: '🇩🇪' },
+      { prefijo: '39', bandera: '🇮🇹' }, { prefijo: '81', bandera: '🇯🇵' },
+      { prefijo: '82', bandera: '🇰🇷' }, { prefijo: '86', bandera: '🇨🇳' },
+      { prefijo: '91', bandera: '🇮🇳' }, { prefijo: '61', bandera: '🇦🇺' },
+      { prefijo: '64', bandera: '🇳🇿' }, { prefijo: '1', bandera: '🇺🇸' },
+      { prefijo: '7', bandera: '🇷🇺' }, { prefijo: '63', bandera: '🇵🇭' },
+      { prefijo: '95', bandera: '🇲' }
     ];
 
     const getCountryFlag = (mem) => {
@@ -53,16 +53,17 @@ const handler = async (m, { isOwner, isAdmin, conn, participants, args }) => {
     // Ordenar las banderas según el orden definido
     const orderedFlags = countryFlags.map(c => c.bandera).concat(['🚩']);
 
-    // Texto con estética renovada + firma del bot
+    // Texto con estética RAYO PREM
     let messageText = `
+⛈️ *RAYO PREM* ➔ INVOCACIÓN 🌙
 ╔════════════════════════════╗
    🌐 *${groupName}*
-╚════════════════════════════╝
+╚════════════╝
 
-👥 Integrantes: *${participants.length}*
-📝 Mensaje: *${customMessage}*
+⚡ *Integrantes:* ${participants.length}
+⚡ *Mensaje:* ${customMessage}
 
-╭─── 🌍 Integrantes por país ───╮
+╭─── 🌍 INTEGRANTES POR PAÍS ───╮
 `;
 
     for (const flag of orderedFlags) {
@@ -77,10 +78,10 @@ const handler = async (m, { isOwner, isAdmin, conn, participants, args }) => {
 
     messageText += `╰────────────────────────────╯
 
-🛸 *[ BOX BOT MD ]* 🌌
+⛈️ *RAYO PREM* | *Team Nightwish* ⚡
     `;
 
-    // Aquí va la imagen (pon tu URL en 'url')
+    // Imagen del trueno
     const imageUrl = 'https://files.evogb.win/jgBvm8.jpg';
 
     await conn.sendMessage(m.chat, {
@@ -90,8 +91,8 @@ const handler = async (m, { isOwner, isAdmin, conn, participants, args }) => {
     }, { quoted: m });
 
   } catch (error) {
-    console.error("[ERROR EN TODOS]:", error);
-    conn.reply(m.chat, `❌ Ocurrió un error al ejecutar el comando.`, m);
+    console.error("[ERROR EN RAYO]:", error);
+    conn.reply(m.chat, `⛈️ *RAYO PREM ERROR* ➔ Ocurrió un error al ejecutar el comando.`, m);
   }
 };
 
