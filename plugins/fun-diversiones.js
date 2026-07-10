@@ -1,32 +1,32 @@
 let handler = async (m, { conn, command, text }) => {
-  let who = m.mentionedJid && m.mentionedJid[0] ? m.mentionedJid[0] 
-          : m.quoted ? m.quoted.sender 
+  let who = m.mentionedJid && m.mentionedJid[0]? m.mentionedJid[0]
+          : m.quoted? m.quoted.sender
           : m.sender;
-  
+
   let name = await conn.getName(who);
-  let userTarget = m.mentionedJid && m.mentionedJid[0] ? `@${who.split('@')[0]}` : name;
+  let userTarget = m.mentionedJid && m.mentionedJid[0]? `@${who.split('@')[0]}` : name;
   let porcentaje = Math.floor(Math.random() * 500) + 1;
 
   let respuestas = {
-    'gay': `_*${userTarget}* *ES 🏳️‍🌈* *${porcentaje}%* *GAY*_`,
-    'lesbiana': `_*${userTarget}* *ES 🏳️‍🌈* *${porcentaje}%* *LESBIANA*_`,
-    'pajero': `_*${userTarget}* *ES 😏💦* *${porcentaje}%* *PAJERO*_`,
-    'pajera': `_*${userTarget}* *ES 😏💦* *${porcentaje}%* *PAJERA*_`,
-    'puto': `_*${userTarget}* *ES* *${porcentaje}%* *PUTO, MÁS INFORMACIÓN A SU PRIVADO 🔥🥵 XD*_`,
-    'puta': `_*${userTarget}* *ES* *${porcentaje}%* *PUTA, MÁS INFORMACIÓN A SU PRIVADO 🔥🥵 XD*_`,
-    'manco': `_*${userTarget}* *ES* *${porcentaje}%* *MANCO 💩*_`,
-    'manca': `_*${userTarget}* *ES* *${porcentaje}%* *MANCA 💩*_`,
-    'rata': `_*${userTarget}* *ES* *${porcentaje}%* *RATA 🐁 COME QUESO 🧀*_`,
-    'prostituto': `_*${userTarget}* *ES* *${porcentaje}%* *PROSTITUTO 🫦👅, ¿QUIÉN QUIERE DE SUS SERVICIOS? XD*_`,
-    'prostituta': `_*${userTarget}* *ES* *${porcentaje}%* *PROSTITUTA 🫦👅, ¿QUIÉN QUIERE DE SUS SERVICIOS? XD*_`
+    'gay': `⛈️ *RAYO PREM SCANNER* 🌙\n\n⚡ *${userTarget}* *ES 🏳️‍🌈* *${porcentaje}%* *GAY*\n🌩️ *Team Nightwish*`, // Cambiado
+    'lesbiana': `⛈️ *RAYO PREM SCANNER* 🌙\n\n⚡ *${userTarget}* *ES 🏳️‍🌈* *${porcentaje}%* *LESBIANA*\n🌩️ *Team Nightwish*`, // Cambiado
+    'pajero': `⛈️ *RAYO PREM SCANNER* 🌙\n\n⚡ *${userTarget}* *ES 😏💦* *${porcentaje}%* *PAJERO*\n🌩️ *Team Nightwish*`, // Cambiado
+    'pajera': `⛈️ *RAYO PREM SCANNER* 🌙\n\n⚡ *${userTarget}* *ES 😏💦* *${porcentaje}%* *PAJERA*\n🌩️ *Team Nightwish*`, // Cambiado
+    'puto': `⛈️ *RAYO PREM SCANNER* 🌙\n\n⚡ *${userTarget}* *ES* *${porcentaje}%* *PUTO*\n🔥 *MÁS INFORMACIÓN A SU PRIVADO* 🔥🥵\n🌩️ *Team Nightwish*`, // Cambiado
+    'puta': `⛈️ *RAYO PREM SCANNER* 🌙\n\n⚡ *${userTarget}* *ES* *${porcentaje}%* *PUTA*\n🔥 *MÁS INFORMACIÓN A SU PRIVADO* 🔥🥵\n🌩️ *Team Nightwish*`, // Cambiado
+    'manco': `⛈️ *RAYO PREM SCANNER* 🌙\n\n⚡ *${userTarget}* *ES* *${porcentaje}%* *MANCO* 💩\n🌩️ *Team Nightwish*`, // Cambiado
+    'manca': `⛈️ *RAYO PREM SCANNER* 🌙\n\n⚡ *${userTarget}* *ES* *${porcentaje}%* *MANCA* 💩\n🌩️ *Team Nightwish*`, // Cambiado
+    'rata': `⛈️ *RAYO PREM SCANNER* 🌙\n\n⚡ *${userTarget}* *ES* *${porcentaje}%* *RATA* 🐁 *COME QUESO* 🧀\n🌩️ *Team Nightwish*`, // Cambiado
+    'prostituto': `⛈️ *RAYO PREM SCANNER* 🌙\n\n⚡ *${userTarget}* *ES* *${porcentaje}%* *PROSTITUTO* 🫦👅\n❓ *¿QUIÉN QUIERE DE SUS SERVICIOS?*\n🌩️ *Team Nightwish*`, // Cambiado
+    'prostituta': `⛈️ *RAYO PREM SCANNER* 🌙\n\n⚡ *${userTarget}* *ES* *${porcentaje}%* *PROSTITUTA* 🫦👅\n❓ *¿QUIÉN QUIERE DE SUS SERVICIOS?*\n🌩️ *Team Nightwish*` // Cambiado
   }
 
   let respuestaFinal = respuestas[command.toLowerCase()];
-  
+
   if (respuestaFinal) {
-    await conn.sendMessage(m.chat, { 
-      text: respuestaFinal, 
-      mentions: [who] 
+    await conn.sendMessage(m.chat, {
+      text: respuestaFinal,
+      mentions: [who]
     }, { quoted: m });
   }
 }
