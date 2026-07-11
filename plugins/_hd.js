@@ -2,7 +2,7 @@ import fetch from "node-fetch"
 import FormData from "form-data"
 import crypto from "crypto"
 
-const MARCA = 'For Three Bot 🌀' // <- TU MARCA
+const MARCA = 'Team Nightwish 🌙' // <- TU MARCA
 
 let handler = async (m, { conn, text, usedPrefix, command }) => {
     const key = Buffer.from('c2FzdWtl', 'base64').toString('utf-8')
@@ -11,7 +11,16 @@ let handler = async (m, { conn, text, usedPrefix, command }) => {
     let urlTarget = text? text.trim() : ''
 
     if (!urlTarget &&!/image\/(jpe?g|png)/.test(mime)) {
-        return conn.reply(m.chat, `*☁️ Uchiha Cloud AI ${MARCA}*\n\n*Uso correcto:*\n> Responde a una imagen, envía una o proporciona un enlace con el comando *${usedPrefix + command}*`, m)
+        return conn.reply(m.chat, `╭─❒ *『 𝗧𝗘𝗔𝗠 𝗡𝗜𝗚𝗛𝗧𝗪𝗜𝗦𝗛 』* ❒
+│ ⚡ *HD UPSCALER AI*
+│
+│ 🌙 *Uso correcto:*
+│ Responde a una imagen o envía
+│ un link con: *${usedPrefix + command}*
+│
+│ 🖼️ *Formatos:* JPG / PNG
+│ ⛈️ *Potenciado por IA*
+╰─────────────────❒`, m)
     }
 
     await m.react('⏳')
@@ -39,7 +48,12 @@ let handler = async (m, { conn, text, usedPrefix, command }) => {
                 finalUrl = jsonUpload.url
             } else {
                 await m.react('❌')
-                return m.reply(`❌ Error al subir imagen temporal:\n🔴 ${jsonUpload?.message || 'Sin respuesta'}\n${MARCA}`)
+                return m.reply(`╭─❒ *『 𝗧𝗘𝗔𝗠 𝗡𝗜𝗚𝗛𝗧𝗪𝗜𝗦𝗛 』* ❒
+│ ❌ *ERROR*
+│
+│ 🔴 *No se pudo subir la imagen*
+│ ⚡ *Motivo:* ${jsonUpload?.message || 'Sin respuesta'}
+╰─────────────────❒`)
             }
         }
 
@@ -49,11 +63,24 @@ let handler = async (m, { conn, text, usedPrefix, command }) => {
         if (contentType && contentType.includes("application/json")) {
             let jsonDl = await resDl.json()
             await m.react('❌')
-            return m.reply(`❌ Error de la API: ${jsonDl.message || 'No se pudo mejorar la imagen.'}\n${MARCA}`)
+            return m.reply(`╭─❒ *『 𝗧𝗘𝗔𝗠 𝗡𝗜𝗚𝗛𝗧𝗪𝗜𝗦𝗛 』* ❒
+│ ❌ *ERROR DE API*
+│
+│ ⚡ *${jsonDl.message || 'No se pudo mejorar la imagen.'}*
+╰─────────────────❒`)
         }
 
         let buffer = await resDl.buffer()
-        let info = `*☁️ Uchiha Cloud - Imagen Mejorada*\n\n✨ *Resultado:* Éxito al procesar la imagen con IA.\n\n📂 *COMANDO:* Uchiha AI Image Upscaler\n👤 *CREADOR:* ${MARCA}\n⚡ *CANAL:* ${MARCA}\n🔌 *API:* https://api.evogb.org` // <- TU MARCA
+        let info = `╭─❒ *『 𝗧𝗘𝗔𝗠 𝗡𝗜𝗚𝗛𝗧𝗪𝗜𝗦𝗛 』* ❒
+│ ✨ *IMAGEN MEJORADA*
+│
+│ 🌙 *Estado:* Procesado con IA
+│ ⚡ *Comando:* ${command.toUpperCase()}
+│ 👑 *Bot:* Team Nightwish
+│ 🔌 *API:* evogb.org
+│
+│ > *“La claridad del trueno nocturno”*
+╰─────────────────❒`
 
         await conn.sendMessage(m.chat, { image: buffer, caption: info }, { quoted: m })
         await m.react('✅')
@@ -61,7 +88,12 @@ let handler = async (m, { conn, text, usedPrefix, command }) => {
     } catch (e) {
         console.error(e)
         await m.react('❌')
-        m.reply(`❌ Ocurrió un error interno o los servidores de IA se encuentran saturados.\n${MARCA}`) // <- TU MARCA
+        m.reply(`╭─❒ *『 𝗧𝗘𝗔𝗠 𝗡𝗜𝗚𝗛𝗧𝗪𝗜𝗦𝗛 』* ❒
+│ ⛈️ *ERROR INTERNO*
+│
+│ ⚡ *Servidores saturados o error*
+│ 🌙 *Intenta de nuevo en unos seg*
+╰─────────────────❒`)
     }
 }
 
