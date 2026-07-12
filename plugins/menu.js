@@ -5,11 +5,9 @@ let handler = async (m, { conn, usedPrefix }) => {
   let taguser = m.mentionedJid && m.mentionedJid[0]? m.mentionedJid[0] : m.quoted? m.quoted.sender : m.sender
   const img = readFileSync(join(process.cwd(), 'storage', 'img', 'rayo.jpg'))
 
-  // Stats
   let totalUsers = Object.keys(global.db.data.users).length
   let totalCmds = Object.values(global.plugins).filter(p => p.help &&!p.disabled).length
 
-  // Fecha y hora
   let fecha = new Date()
   let opcionesDia = { weekday: 'long', timeZone: 'America/Lima' }
   let opcionesFecha = { day: '2-digit', month: 'long', year: 'numeric', timeZone: 'America/Lima' }
@@ -24,7 +22,7 @@ let handler = async (m, { conn, usedPrefix }) => {
   let m2 = Math.floor(uptime / 60000) % 60
   let s = Math.floor(uptime / 1000) % 60
 
-  let menuText = `⚡━━━━━━━━━━━━━━━━⚡
+  let menuText = `⚡━━━━━━━━⚡
      ⛈️ *𝐑𝐀𝐘𝐎 𝐏𝐑𝐄𝐌 𝐁𝐎𝐓* ⛈️
 ⚡━━━━━━━━⚡
 
@@ -35,7 +33,7 @@ let handler = async (m, { conn, usedPrefix }) => {
 ⚡━━ *ESTADISTICAS* ━━⚡
 📊 *Comandos:* ${totalCmds}
 👥 *Usuarios:* ${totalUsers}
-⚡ *Modo:* Publico
+🌐 *Web:* forthreepro.github.io/For-Three-Bot
 
 ⚡━━ *FECHA Y HORA* ━━⚡
 📅 *Día:* ${dia}
@@ -55,18 +53,9 @@ let handler = async (m, { conn, usedPrefix }) => {
   }
 
   let emojis = {
-    'downloader': '📥',
-    'search': '🔍',
-    'config': '⚙️',
-    'group': '👥',
-    'info': 'ℹ️',
-    'fun': '🎭',
-    'sticker': '⚡',
-    'owner': '👑',
-    'anime': '🌸',
-    'rg': '💎',
-    'game': '🎮',
-    'general': '✨'
+    'downloader': '📥', 'search': '🔍', 'config': '⚙️', 'group': '👥',
+    'info': 'ℹ️', 'fun': '🎭', 'sticker': '⚡', 'owner': '👑',
+    'anime': '🌸', 'rg': '💎', 'game': '🎮', 'general': '✨'
   }
 
   for (let category in groups) {
@@ -82,7 +71,7 @@ let handler = async (m, { conn, usedPrefix }) => {
 ⛈️ *BOT:* Rayo Prem Bot
 ⚡ *Creador:* Whois Yallico 👑
 ⛈️ *Versión:* 3.0.0 Thunder Edition
-⚡ *Github:* github.com/WhoisYallico
+🌐 *Web Oficial:* https://forthreepro.github.io/For-Three-Bot
 
 > *"Domina el trueno, domina el chat"* ⚡
 ⚡━━━━━━━━`
