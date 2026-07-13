@@ -2,7 +2,7 @@ let handler = async (m, { conn, participants, groupMetadata, command }) => {
 
     // SI ES GDC
     if (command === 'gdc' || command === 'guerradeclanes' || command === 'guerra') {
-        const pp = await conn.profilePictureUrl(m.chat, 'image').catch(_ => null) || './storage/img/siskedurl.jpg'
+        const pp = await conn.profilePictureUrl(m.chat, 'image').catch(_ => null) || './storage/img/rayo.jpg'
         const groupAdmins = participants.filter(p => p.admin)
         const owner = groupMetadata.owner || groupAdmins.find(p => p.admin === 'superadmin')?.id || m.chat.split`-`[0] + '@s.whatsapp.net'
 
