@@ -1,70 +1,51 @@
-import axios from 'axios'
-import fs from 'fs'
-import { exec } from 'child_process'
+import { sticker } from '../lib/sticker.js';
+import axios from 'axios';
 
-var handler = async (m, { conn, text, usedPrefix, command }) => {
-    let final = text ? text.trim() : (m.quoted?.text || null)
-    if (!final) return conn.reply(m.chat, `⚡ *Escribe el contenido para tu sticker*\n\n> *Ejemplo:* ${usedPrefix + command} Hola mundo`, m)
+const delay = (ms) => new Promise(resolve => setTimeout(resolve, ms));
 
-    if (final.length > 35) {
-        return conn.reply(m.chat, `⚠️ *Demasiado largo.*\n\n📌 Máximo: *35 letras*`, m)
+const fetchSticker = async (text, attempt = 1) => {
+    try {
+        const res = await axios.get('https://kepolu-brat.hf.space/brat', {
+            params: { q: text },
+            responseType: 'arraybuffer',
+        });
+        return res.data;
+    } catch (err) {
+        if (err.response?.status === 429 && attempt <= 3) {
+            const retryAfter = err.response.headers['retry-after'] || 5;
+            await delay(retryAfter * 1000);
+            return fetchSticker(text, attempt + 1);
+        }
+        throw err;
     }
+};
 
-    await m.react('🕒')
+let handler = async (m, { conn, text }) => {
+    if (!text) {
+        return conn.sendMessage(m.chat, {
+            text: `😒 ¿Y el texto, genio? No puedo hacer magia sin palabras.\n\n📌 *Usa:* .brat tu texto aquí`,
+        }, { quoted: m });
+    }
 
     try {
-        const formatted = wrap(final, 28)
-        const key = Buffer.from('c3lscGh5LTZmMTUwZA==', 'base64').toString('utf-8')
-        const url = `https://sylphyy.xyz/tools/brat?text=${encodeURIComponent(formatted)}&color=black&fondo=white&type=Nose&api_key=${key}`
+        const buffer = await fetchSticker(text);
+        const stiker = await sticker(buffer, false, global.botname, global.nombre);
 
-        const res = await axios.get(url, { responseType: 'arraybuffer' })
-
-        const img = `./tmp-${Date.now()}.png`
-        const webp = `./tmp-${Date.now()}.webp`
-        fs.writeFileSync(img, res.data)
-
-        await new Promise((resolve, reject) => {
-            exec(`ffmpeg -i ${img} -vcodec libwebp -vf "scale=512:512:force_original_aspect_ratio=decrease,format=rgba,pad=512:512:(ow-iw)/2:(oh-ih)/2:color=#00000000" ${webp}`, (err) => {
-                if (err) reject(err)
-                else resolve()
-            })
-        })
-
-        await conn.sendMessage(m.chat, { 
-            sticker: fs.readFileSync(webp), 
-            packname: "Barboza Developer 👤", 
-            author: "Dev Barboza x Zona Developers ⚡" 
-        }, { quoted: m })
-
-        await m.react('✔️')
-
-        if (fs.existsSync(img)) fs.unlinkSync(img)
-        if (fs.existsSync(webp)) fs.unlinkSync(webp)
-
-    } catch (e) {
-        await m.react('❌')
-        m.reply('⚠️ Error en la generación.')
-    }
-}
-
-function wrap(text, max = 22) {
-    let words = text.split(' ')
-    let lines = []
-    let cur = []
-    for (let w of words) {
-        if ((cur.join(' ').length + w.length + 1) > max) {
-            lines.push(cur.join(' '))
-            cur = [w]
+        if (stiker) {
+            return conn.sendFile(m.chat, stiker, 'brat.webp', '', m);
         } else {
-            cur.push(w)
+            throw new Error('No se pudo generar el sticker. ¿Qué texto tan feo pusiste? 🤨');
         }
+    } catch (err) {
+        console.error(err);
+        return conn.sendMessage(m.chat, {
+            text: `💀 Error al generar el sticker:\n${err.message || 'Algo salió mal, como tú.'}`,
+        }, { quoted: m });
     }
-    if (cur.length) lines.push(cur.join(' '))
-    return lines.join('\n')
-}
+};
 
-handler.help = ['brat']
-handler.tags = ['sticker']
-handler.command = /^(brat)$/i
+handler.command = ['brat'];
+handler.tags = ['sticker'];
+handler.help = ['brat *<texto>*'];
 
-export default handler
+export default handler;
