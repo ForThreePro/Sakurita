@@ -109,5 +109,3 @@ handler.admin = true;
 handler.group = true;
 
 export default handler
-
-Solo cambia el diseño a thunder
