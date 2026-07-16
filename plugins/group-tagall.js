@@ -1,6 +1,3 @@
-import { join } from 'path'
-import { readFileSync } from 'fs'
-
 const handler = async (m, { isOwner, isAdmin, conn, participants, args }) => {
   try {
     if (!(isAdmin || isOwner)) {
@@ -30,7 +27,7 @@ const handler = async (m, { isOwner, isAdmin, conn, participants, args }) => {
       { prefijo: '91', bandera: '🇮🇳' }, { prefijo: '61', bandera: '🇦🇺' },
       { prefijo: '64', bandera: '🇳🇿' }, { prefijo: '1', bandera: '🇺🇸' },
       { prefijo: '7', bandera: '🇷🇺' }, { prefijo: '63', bandera: '🇵🇭' },
-      { prefijo: '95', bandera: '🇲' }
+      { prefijo: '95', bandera: '🇲🇲' }
     ];
 
     const getCountryFlag = (mem) => {
@@ -49,75 +46,59 @@ const handler = async (m, { isOwner, isAdmin, conn, participants, args }) => {
     const grouped = {};
     for (const mem of participants) {
       const flag = getCountryFlag(mem);
-      if (!grouped) grouped = [];
-      grouped.push(mem);
+      if (!grouped[flag]) grouped[flag] = [];
+      grouped[flag].push(mem);
     }
 
     const orderedFlags = countryFlags.map(c => c.bandera).concat(['🚩']);
 
-    // DISEÑO THUNDER CLEAN
-    let messageText = `ᯇ 𝗥𝗔𝗬𝗢 𝗣𝗥𝗘𝗠 𝗕𝗢𝗧 ⚡ ୧
-
- ⤷ ┇ 𝗜𝗡𝗩𝗢𝗖𝗔𝗖𝗜𝗢𝗡 𝗚𝗘𝗡𝗘𝗥𝗔𝗟 ：✿ 。
-꒰ ◞⁺⊹ ．grupo • ${groupName}
-
- ꒱ ׁ. ᘏ 𝗆𝖾𝗇𝗌⍺𝗃𝖾 ׅ 𝆬
-⚡ ${customMessage} ࣪ ꕀ ˚
-> *"Domina el trueno, domina el chat"*
-
-──愛 *INTEGRANTES* ╏ 📊
-👥 Total: ${participants.length} usuarios
-
-──⚡ *LISTA POR PAÍS* ⚡──
-`
+    // Texto con estética Team Nightwish
+    let messageText = `╭─❒ *『 𝗧𝗘𝗔𝗠 𝗡𝗜𝗚𝗛𝗧𝗪𝗜𝗦𝗛 』* ❒
+│ 📢 *INVOCACIÓN GENERAL*
+│
+│ 🌐 *Grupo:* ${groupName}
+│ ⚡ *Integrantes:* ${participants.length}
+│ 🌙 *Mensaje:* ${customMessage}
+│
+├─❒ *INTEGRANTES POR PAÍS* ❒
+`;
 
     for (const flag of orderedFlags) {
-      if (grouped) {
-        messageText += `\n.⃟𖥔 ݁⚡𖦹˙— \`${flag}\` —˙𖦹⚡꒷\n`
-        for (const mem of grouped) {
+      if (grouped[flag]) {
+        for (const mem of grouped[flag]) {
           const realJid = mem.jid || mem.id || '';
           const displayNumber = realJid.split('@')[0];
-          messageText += ` ⚡ ➛@${displayNumber}\n`
+          messageText += `│ ${flag} @${displayNumber}\n`;
         }
-        messageText += ` ㅤ└──.✦ ── ⊰ ̟!!.✦. ˙\n`
       }
     }
 
-    messageText += `
-⚡━━━━━━━━
-⛈️ *BOT:* RAYO PREM BOT
-⚡ *Creador:* Whois Yallico 👑
-⛈️ *Versión:* 3.0.8 Thunder Clean
+    messageText += `╰─────────────────❒
+│
+│ > *“Que el trueno los reúna”*
+╰─────────────────❒`;
 
-> *"Que el trueno los reúna"* ⚡
-⚡━━━━━━━━`
-
-    // Detectar foto del grupo y convertir a buffer para evitar error
+    // NUEVO: Detectar foto del grupo
     let img
     try {
-      const url = await conn.profilePictureUrl(m.chat, 'image')
-      const res = await fetch(url)
-      img = await res.buffer()
-
-      await conn.sendMessage(m.chat, {
-        image: img,
-        caption: messageText,
-        mentions: participants.map(a => a.jid || a.id)
-      }, { quoted: m });
-
+      img = await conn.profilePictureUrl(m.chat, 'image') // Foto del grupo
     } catch {
-      await conn.sendMessage(m.chat, {
-        text: messageText,
-        mentions: participants.map(a => a.jid || a.id)
-      }, { quoted: m });
+      img = 'https://files.evogb.win/jgBvm8.jpg' // Fallback trueno
     }
 
+    await conn.sendMessage(m.chat, {
+      image: { url: img },
+      caption: messageText,
+      mentions: participants.map(a => a.jid || a.id)
+    }, { quoted: m });
+
   } catch (error) {
-    console.error("[ERROR EN RAYO TODOS]:", error);
-    conn.reply(m.chat, `⚡━━━━━━━━
-⛈️ *ERROR EN INVOCACION*
-⚡ ${error.message}
-⚡━━━━━━━━`, m);
+    console.error("[ERROR EN NIGHTWISH]:", error);
+    conn.reply(m.chat, `╭─❒ *『 𝗧𝗘𝗔𝗠 𝗡𝗜𝗚𝗛𝗧𝗪𝗜𝗦𝗛 』* ❒
+│ ⛈️ *ERROR*
+│
+│ ⚡ *Ocurrió un error al ejecutar el comando*
+╰─────────────────❒`, m);
   }
 };
 
@@ -128,3 +109,5 @@ handler.admin = true;
 handler.group = true;
 
 export default handler
+
+Solo cambia el diseño a thunder
