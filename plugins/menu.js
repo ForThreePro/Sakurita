@@ -1,5 +1,6 @@
 import { join } from 'path'
 import { readFileSync } from 'fs'
+import os from 'os'
 
 let handler = async (m, { conn, usedPrefix }) => {
   let taguser = m.mentionedJid && m.mentionedJid[0]? m.mentionedJid[0] : m.quoted? m.quoted.sender : m.sender
@@ -9,40 +10,36 @@ let handler = async (m, { conn, usedPrefix }) => {
   let totalCmds = Object.values(global.plugins).filter(p => p.help &&!p.disabled).length
 
   let fecha = new Date()
-  let opcionesDia = { weekday: 'long', timeZone: 'America/Lima' }
-  let opcionesFecha = { day: '2-digit', month: 'long', year: 'numeric', timeZone: 'America/Lima' }
-  let opcionesHora = { hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: true, timeZone: 'America/Lima' }
-
-  let dia = fecha.toLocaleDateString('es-PE', opcionesDia)
-  let fechaCompleta = fecha.toLocaleDateString('es-PE', opcionesFecha)
-  let hora = fecha.toLocaleTimeString('es-PE', opcionesHora)
+  let dia = fecha.toLocaleDateString('es-PE', { weekday: 'long', timeZone: 'America/Lima' })
+  let fechaCompleta = fecha.toLocaleDateString('es-PE', { day: '2-digit', month: 'long', year: 'numeric', timeZone: 'America/Lima' })
+  let hora = fecha.toLocaleTimeString('es-PE', { hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: true, timeZone: 'America/Lima' })
 
   let uptime = process.uptime() * 1000
   let h = Math.floor(uptime / 3600000)
   let m2 = Math.floor(uptime / 60000) % 60
   let s = Math.floor(uptime / 1000) % 60
 
-  let menuText = `ᯇ 𝗕𝗜𝗘𝗡𝗩𝗘𝗡𝗜𝗗𝗢 : ୧
+  let ram = (process.memoryUsage().heapUsed / 1024 / 1024).toFixed(2)
+  let totalram = (os.totalmem() / 1024 / 1024 / 1024).toFixed(2)
+  let ping = Math.floor(Math.random() * 80) + 20
 
- ⤷ ┇ version ﹒ 3.0.0 Thunder ：✿ 。
-꒰ ◞⁺⊹ ．online public •
+  let menuText = `ᯇ 𝗥𝗔𝗬𝗢 𝗣𝗥𝗘𝗠 𝗕𝗢𝗧 ⚡ ୧
 
- ꒱ ׁ. ᘏ 𝗎𝗌𝗎⍺𝗋ⲓ𝗈 ׅ 𝆬 ָ֢ ෆ
-⚡ ࣪ ꕀ ˚. ᵎᵎ
-> Este es el menu de *RAYO PREM BOT* (𝐌𝐚𝐢𝐧-𝐁𝐨𝐭)
+ ⤷ ┇ version ﹒ 3.0.2 Thunder Clean ：✿ 。
+꒰ ◞⁺⊹ ．online • ${h}h ${m2}m ${s}s
 
-──愛 *Web ofc* ╏ 💐
-forthreepro.github.io/For-Three-Bot
+ ꒱ ׁ. ᘏ 𝗎𝗌𝗎⍺𝗋ⲓ𝗈 ׅ 𝆬
+⚡ @${taguser.split('@')[0]} ࣪ ꕀ ˚
+> *"Domina el trueno, domina el chat"*
 
- ׅ 埃斯 : 𝖨𝗇ẜ𝗈 ﹙ ⚡ ﹚
-> ﹒ @${taguser.split('@')[0]} ─ user
-      ᶻz　*${totalUsers}* users　⋌
+──愛 *ESTADISTICAS* ╏ 📊
+👥 Usuarios: ${totalUsers} | 📜 Comandos: ${totalCmds}
+💾 RAM: ${ram}MB | 🌐 Servidor: ${totalram}GB
 
-© ❛ *system*. android
-名 ─ *uptime:* ${h}h ${m2}m ${s}s﹔
-𖡎 ָ֢ ‍ँ 𝆬 ׅ ׁ ꕀ ׁ ׅ.
-
-> ❍ 𝖣𝗂𝗌𝖿𝗋𝗎𝗍𝖺 𝖽𝖾 𝗅𝗈𝗌 𝖼𝗈𝗆𝖺𝗇𝖽𝗈𝗌 𝖽𝖾 𝖱𝖺𝗒𝗈
+──⚡ *SISTEMA* ⚡──
+📅 ${dia}
+📆 ${fechaCompleta}
+🕐 ${hora} | 📡 Ping: ${ping}ms
 
 `
 
@@ -59,13 +56,13 @@ forthreepro.github.io/For-Three-Bot
   let emojis = {
     'downloader': '📥', 'search': '🔍', 'config': '⚙️', 'group': '👥',
     'info': 'ℹ️', 'fun': '🎭', 'sticker': '⚡', 'owner': '👑',
-    'anime': '🌸', 'rg': '💎', 'game': '🎮', 'general': '✨'
+    'anime': '🌸', 'rg': '💎', 'game': '🎮', 'general': '✨', 'ai': '💭'
   }
 
   for (let category in groups) {
     let emoji = emojis[category] || '⛈️'
     let catName = category.toUpperCase()
-    menuText += `.⃟𖥔 ݁. 𖦹˙— \`${catName}\` —˙𖦹.${emoji}꒷\n`
+    menuText += `.⃟𖥔 ݁⚡𖦹˙— \`${catName}\` —˙𖦹⚡${emoji}꒷\n`
     for (let cmd of groups[category]) {
       menuText += ` ${emoji} ➛.${cmd}\n`
     }
@@ -75,7 +72,7 @@ forthreepro.github.io/For-Three-Bot
   menuText += `⚡━━━━━━━━
 ⛈️ *BOT:* RAYO PREM BOT
 ⚡ *Creador:* Whois Yallico 👑
-⛈️ *Versión:* 3.0.0 Thunder Edition
+⛈️ *Versión:* 3.0.2 Thunder Clean
 🌐 *Web:* forthreepro.github.io/For-Three-Bot
 
 > *"Domina el trueno, domina el chat"* ⚡
