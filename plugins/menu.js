@@ -22,23 +22,27 @@ let handler = async (m, { conn, usedPrefix }) => {
   let m2 = Math.floor(uptime / 60000) % 60
   let s = Math.floor(uptime / 1000) % 60
 
-  let menuText = `⚡━━━━━━━━⚡
-     ⛈️ *𝐑𝐀𝐘𝐎 𝐏𝐑𝐄𝐌 𝐁𝐎𝐓* ⛈️
-⚡━━━━━━━━⚡
+  let menuText = `ᯇ 𝗕𝗜𝗘𝗡𝗩𝗘𝗡𝗜𝗗𝗢 : ୧
 
-⚡ *Usuario:* @${taguser.split('@')[0]}
-⛈️ *Prefijo:* [ ${usedPrefix} ]
-⏰ *Activo:* ${h}h ${m2}m ${s}s
+ ⤷ ┇ version ﹒ 3.0.0 Thunder ：✿ 。
+꒰ ◞⁺⊹ ．online public •
 
-⚡━━ *ESTADISTICAS* ━━⚡
-📊 *Comandos:* ${totalCmds}
-👥 *Usuarios:* ${totalUsers}
-🌐 *Web:* forthreepro.github.io/For-Three-Bot
+ ꒱ ׁ. ᘏ 𝗎𝗌𝗎⍺𝗋ⲓ𝗈 ׅ 𝆬 ָ֢ ෆ
+⚡ ࣪ ꕀ ˚. ᵎᵎ
+> Este es el menu de *RAYO PREM BOT* (𝐌𝐚𝐢𝐧-𝐁𝐨𝐭)
 
-⚡━━ *FECHA Y HORA* ━━⚡
-📅 *Día:* ${dia}
-📆 *Fecha:* ${fechaCompleta}
-🕐 *Hora:* ${hora}
+──愛 *Web ofc* ╏ 💐
+forthreepro.github.io/For-Three-Bot
+
+ ׅ 埃斯 : 𝖨𝗇ẜ𝗈 ﹙ ⚡ ﹚
+> ﹒ @${taguser.split('@')[0]} ─ user
+      ᶻz　*${totalUsers}* users　⋌
+
+© ❛ *system*. android
+名 ─ *uptime:* ${h}h ${m2}m ${s}s﹔
+𖡎 ָ֢ ‍ँ 𝆬 ׅ ׁ ꕀ ׁ ׅ.
+
+> ❍ 𝖣𝗂𝗌𝖿𝗋𝗎𝗍𝖺 𝖽𝖾 𝗅𝗈𝗌 𝖼𝗈𝗆𝖺𝗇𝖽𝗈𝗌 𝖽𝖾 𝖱𝖺𝗒𝗈
 
 `
 
@@ -60,18 +64,19 @@ let handler = async (m, { conn, usedPrefix }) => {
 
   for (let category in groups) {
     let emoji = emojis[category] || '⛈️'
-    menuText += `⚡━━ ${emoji} *${category.toUpperCase()}* ━━⚡\n`
+    let catName = category.toUpperCase()
+    menuText += `.⃟𖥔 ݁. 𖦹˙— \`${catName}\` —˙𖦹.${emoji}꒷\n`
     for (let cmd of groups[category]) {
-      menuText += `⛈️ ${usedPrefix}${cmd}\n`
+      menuText += ` ${emoji} ➛.${cmd}\n`
     }
-    menuText += `\n`
+    menuText += ` ㅤ└──.✦ ── ⊰ ̟!!.✦. ˙\n\n`
   }
 
-  menuText += `⚡━━━━━━━━━━━━━━━━
-⛈️ *BOT:* Rayo Prem Bot
+  menuText += `⚡━━━━━━━━
+⛈️ *BOT:* RAYO PREM BOT
 ⚡ *Creador:* Whois Yallico 👑
 ⛈️ *Versión:* 3.0.0 Thunder Edition
-🌐 *Web Oficial:* https://forthreepro.github.io/For-Three-Bot
+🌐 *Web:* forthreepro.github.io/For-Three-Bot
 
 > *"Domina el trueno, domina el chat"* ⚡
 ⚡━━━━━━━━`
