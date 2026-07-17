@@ -3,24 +3,24 @@ import fetch from "node-fetch"
 import yts from 'yt-search'
 
 let handler = async (m, { conn, text, command, usedPrefix }) => {
-    if (!text) return conn.reply(m.chat, `╭─❒ *『 𝗧𝗘𝗔𝗠 𝗡𝗜𝗚𝗛𝗧𝗪𝗜𝗦𝗛 』* ❒
-│ ⛈️ *CENTRAL DE DESCARGAS*
+    if (!text) return conn.reply(m.chat, `╭─❒ *『 𝗖𝗬𝗕𝗘𝗥 𝗕𝗢𝗧 』* ❒
+│ ⚡ *CENTRAL DE DESCARGAS*
 │
-│ ⚡ *YouTube:*
-│ 🌙 *.play* nombre = Audio YT
-│ 🌙 *.play2* nombre = Video YT
-│ 🌙 *.ytmp3* link/nombre = Audio Directo
-│ 🌙 *.ytmp4* link/nombre = Video 720p Directo
+│ 🤖 *YouTube:*
+│ 💻 *.play* nombre = Audio YT
+│ 💻 *.play2* nombre = Video YT
+│ 💻 *.ytmp3* link/nombre = Audio Directo
+│ 💻 *.ytmp4* link/nombre = Video 720p Directo
 │
-│ ⚡ *Música y Social:*
-│ 🌙 *.spotify* nombre = Audio SP
-│ 🌙 *.tiktok* link = Video TT
-│ 🌙 *.tiktoksearch* texto = Buscar TT
-│ 🌙 *.ig* link = Instagram
-│ 🌙 *.fb* link = Facebook
-│ 🌙 *.mediafire* link = MediaFire
+│ 🤖 *Música y Social:*
+│ 💻 *.spotify* nombre = Audio SP
+│ 💻 *.tiktok* link = Video TT
+│ 💻 *.tiktoksearch* texto = Buscar TT
+│ 💻 *.ig* link = Instagram
+│ 💻 *.fb* link = Facebook
+│ 💻 *.mediafire* link = MediaFire
 │
-│ > *“Descarga el trueno nocturno”*
+│ > *“Descarga procesada por Cyber Bot AI”*
 ╰─────────────────❒`, m)
 
     await m.react('⏳')
@@ -39,13 +39,13 @@ let handler = async (m, { conn, text, command, usedPrefix }) => {
 
             let isVideo = command === 'play2'
             let apiUrl = isVideo
-              ? `https://api.evogb.org/dl/ytmp4?url=${encodeURIComponent(vid.url)}&quality=720&key=${keySasuke}`
+             ? `https://api.evogb.org/dl/ytmp4?url=${encodeURIComponent(vid.url)}&quality=720&key=${keySasuke}`
                 : `https://api.evogb.org/dl/ytmp3?url=${encodeURIComponent(vid.url)}&key=${keySasuke}`
 
             let json = await (await fetch(apiUrl)).json()
             if (!json.status) throw 'YT_DL_ERROR'
 
-            let cap = `╭─❒ *『 𝗧𝗘𝗔𝗠 𝗡𝗜𝗚𝗛𝗧𝗪𝗜𝗦𝗛 』* ❒
+            let cap = `╭─❒ *『 𝗖𝗬𝗕𝗘𝗥 𝗕𝗢𝗧 』* ❒
 │ ⚡ *YOUTUBE ${isVideo? 'VIDEO' : 'AUDIO'}*
 │
 │ 📌 *Título:* ${vid.title}
@@ -54,7 +54,7 @@ let handler = async (m, { conn, text, command, usedPrefix }) => {
 │ 👁️ *Vistas:* ${vid.views.toLocaleString()}
 │ 📁 *Formato:* ${isVideo? 'MP4 720p' : 'MP3 320kbps'}
 │
-│ > *“Extrayendo del trueno digital”*
+│ > *“Extrayendo datos del servidor”*
 ╰─────────────────❒`
 
             await conn.sendMessage(m.chat, { image: { url: vid.thumbnail }, caption: cap }, { quoted: m })
@@ -76,13 +76,13 @@ let handler = async (m, { conn, text, command, usedPrefix }) => {
 
             let isVideo = command === 'ytmp4'
             let apiUrl = isVideo
-               ? `https://api.evogb.org/dl/ytmp4?url=${encodeURIComponent(vid.url)}&quality=720&key=${keySasuke}`
+              ? `https://api.evogb.org/dl/ytmp4?url=${encodeURIComponent(vid.url)}&quality=720&key=${keySasuke}`
                 : `https://api.evogb.org/dl/ytmp3?url=${encodeURIComponent(vid.url)}&key=${keySasuke}`
 
             let json = await (await fetch(apiUrl)).json()
             if (!json.status) throw 'YT_DL_ERROR'
 
-            let cap = `╭─❒ *『 𝗧𝗘𝗔𝗠 𝗡𝗜𝗚𝗛𝗧𝗪𝗜𝗦𝗛 』* ❒
+            let cap = `╭─❒ *『 𝗖𝗬𝗕𝗘𝗥 𝗕𝗢𝗧 』* ❒
 │ ⚡ *YOUTUBE ${isVideo? 'VIDEO' : 'AUDIO'} DIRECTO*
 │
 │ 📌 *Título:* ${vid.title}
@@ -90,7 +90,7 @@ let handler = async (m, { conn, text, command, usedPrefix }) => {
 │ ⏱️ *Duración:* ${vid.timestamp}
 │ 👁️ *Vistas:* ${vid.views.toLocaleString()}
 │
-│ > *“Descarga iniciada por el rayo”*
+│ > *“Descarga iniciada por el sistema”*
 ╰─────────────────❒`
 
             await conn.sendMessage(m.chat, { image: { url: vid.thumbnail }, caption: cap }, { quoted: m })
@@ -116,7 +116,7 @@ let handler = async (m, { conn, text, command, usedPrefix }) => {
             let dlData = await dlRes.json()
             if (!dlData.status) throw 'SP_DL_ERROR'
 
-            let cap = `╭─❒ *『 𝗧𝗘𝗔𝗠 𝗡𝗜𝗚𝗛𝗧𝗪𝗜𝗦𝗛 』* ❒
+            let cap = `╭─❒ *『 𝗖𝗬𝗕𝗘𝗥 𝗕𝗢𝗧 』* ❒
 │ 🎵 *SPOTIFY DOWNLOADER*
 │
 │ ⚡ *Título:* ${dlData.data.name}
@@ -125,7 +125,7 @@ let handler = async (m, { conn, text, command, usedPrefix }) => {
 │ ⏳ *Duración:* ${dlData.data.duration}
 │ 📅 *Año:* ${dlData.data.year}
 │
-│ > *“Música extraída de la tormenta”*
+│ > *“Música procesada por Cyber Bot”*
 ╰─────────────────❒`
 
             await conn.sendMessage(m.chat, { image: { url: dlData.data.image }, caption: cap }, { quoted: m })
@@ -140,15 +140,15 @@ let handler = async (m, { conn, text, command, usedPrefix }) => {
                 let video = res.data[0]
                 if (!video) throw 'TT_NOT_FOUND'
 
-                let caption = `╭─❒ *『 𝗧𝗘𝗔𝗠 𝗡𝗜𝗚𝗛𝗧𝗪𝗜𝗦𝗛 』* ❒
-│ ⛈️ *TIKTOK SEARCH*
+                let caption = `╭─❒ *『 𝗖𝗬𝗕𝗘𝗥 𝗕𝗢𝗧 』* ❒
+│ ⚡ *TIKTOK SEARCH*
 │
-│ ⚡ *Título:* ${video.title}
+│ 💻 *Título:* ${video.title}
 │ 👤 *Autor:* ${video.author.nickname}
 │ 👁️ *Vistas:* ${video.play_count.toLocaleString()}
 │ ❤️ *Likes:* ${video.digg_count.toLocaleString()}
 │
-│ > *“Video encontrado en la tormenta”*
+│ > *“Video encontrado en la base de datos”*
 ╰─────────────────❒`
                 await conn.sendFile(m.chat, video.dl, 'tiktok.mp4', caption, m)
             } else {
@@ -156,13 +156,13 @@ let handler = async (m, { conn, text, command, usedPrefix }) => {
                 let data = res.data
                 if (!data) throw 'TT_DL_ERROR'
 
-                let caption = `╭─❒ *『 𝗧𝗘𝗔𝗠 𝗡𝗜𝗚𝗛𝗧𝗪𝗜𝗦𝗛 』* ❒
-│ ⛈️ *TIKTOK DOWNLOADER*
+                let caption = `╭─❒ *『 𝗖𝗬𝗕𝗘𝗥 𝗕𝗢𝗧 』* ❒
+│ ⚡ *TIKTOK DOWNLOADER*
 │
-│ ⚡ *Título:* ${data.title}
+│ 💻 *Título:* ${data.title}
 │ 👤 *Autor:* ${data.author.nickname}
 │
-│ > *“Descargado por el rayo nocturno”*
+│ > *“Descargado por el sistema”*
 ╰─────────────────❒`
                 await conn.sendFile(m.chat, Array.isArray(data.dl)? data.dl[0] : data.dl, 'tiktok.mp4', caption, m)
             }
@@ -176,13 +176,13 @@ let handler = async (m, { conn, text, command, usedPrefix }) => {
             let media = data.data[0]
             let type = media.type === 'video'? 'VIDEO' : 'IMAGEN'
 
-            let cap = `╭─❒ *『 𝗧𝗘𝗔𝗠 𝗡𝗜𝗚𝗛𝗧𝗪𝗜𝗦𝗛 』* ❒
+            let cap = `╭─❒ *『 𝗖𝗬𝗕𝗘𝗥 𝗕𝗢𝗧 』* ❒
 │ 📸 *INSTAGRAM DOWNLOADER*
 │
 │ ⚡ *Tipo:* ${type}
-│ 🌙 *Estado:* Enviando contenido
+│ 💻 *Estado:* Enviando contenido
 │
-│ > *“Capturado en la tormenta nocturna”*
+│ > *“Contenido capturado por el sistema”*
 ╰─────────────────❒`
 
             await conn.sendMessage(m.chat, {
@@ -199,13 +199,13 @@ let handler = async (m, { conn, text, command, usedPrefix }) => {
             if (!data.status) throw 'FB_ERROR'
             let video = data.resultados[0]
 
-            let cap = `╭─❒ *『 𝗧𝗘𝗔𝗠 𝗡𝗜𝗚𝗛𝗧𝗪𝗜𝗦𝗛 』* ❒
+            let cap = `╭─❒ *『 𝗖𝗬𝗕𝗘𝗥 𝗕𝗢𝗧 』* ❒
 │ 📘 *FACEBOOK DOWNLOADER*
 │
 │ ⚡ *Calidad:* ${video.calidad || 'HD'}
-│ 🌙 *Estado:* Enviando video
+│ 💻 *Estado:* Enviando video
 │
-│ > *“El video fue extraído por el rayo”*
+│ > *“Video extraído por el sistema”*
 ╰─────────────────❒`
 
             await conn.sendMessage(m.chat, {
@@ -223,14 +223,14 @@ let handler = async (m, { conn, text, command, usedPrefix }) => {
             if (!result.status ||!result.data) throw 'MF_ERROR'
 
             let { name, size, date, dl } = result.data
-            let caption = `╭─❒ *『 𝗧𝗘𝗔𝗠 𝗡𝗜𝗚𝗛𝗧𝗪𝗜𝗦𝗛 』* ❒
+            let caption = `╭─❒ *『 𝗖𝗬𝗕𝗘𝗥 𝗕𝗢𝗧 』* ❒
 │ 📦 *MEDIAFIRE DOWNLOADER*
 │
 │ 🏷 *Nombre:* ${name}
 │ ⚖ *Tamaño:* ${size}
 │ 📅 *Fecha:* ${date}
 │
-│ > *“Archivo extraído de la nube nocturna”*
+│ > *“Archivo extraído del servidor”*
 ╰─────────────────❒`
 
             await conn.sendFile(m.chat, dl, name, caption, m)
@@ -251,11 +251,11 @@ let handler = async (m, { conn, text, command, usedPrefix }) => {
             FB_ERROR: 'Error al procesar el video de Facebook',
             MF_ERROR: 'No se pudo localizar el archivo de MediaFire'
         }
-        m.reply(`╭─❒ *『 𝗧𝗘𝗔𝗠 𝗡𝗜𝗚𝗛𝗧𝗪𝗜𝗦𝗛 』* ❒
-│ ⛈️ *ERROR*
+        m.reply(`╭─❒ *『 𝗖𝗬𝗕𝗘𝗥 𝗕𝗢𝗧 』* ❒
+│ ❌ *ERROR DE SISTEMA*
 │
 │ ⚡ *${msgs[e] || 'Error inesperado'}*
-│ 🌙 *Verifica el enlace/búsqueda*
+│ 🤖 *Verifica el enlace/búsqueda*
 ╰─────────────────❒`)
     }
 }
