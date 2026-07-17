@@ -1,54 +1,21 @@
-import MessageType from '@whiskeysockets/baileys'
-import { generateWAMessageFromContent } from '@whiskeysockets/baileys'
-
 let handler = async (m, { conn, text, participants }) => {
-  let users = participants.map(u => conn.decodeJid(u.id))
-  let q = m.quoted ? m.quoted : m
-  let c = m.quoted ? m.quoted : m.msg
-
-  // Detectar si el mensaje citado es del bot
-  let botJid = conn.user.jid
-  let isFromBot = false
-
-  if (q?.key?.fromMe) {
-    isFromBot = true
-  } else if (q?.participant && botJid.includes(q.participant)) {
-    isFromBot = true
-  } else if (q?.sender && botJid.includes(q.sender)) {
-    isFromBot = true
+  const mime = m.mtype
+  const type = /imageMessage|videoMessage|conversation|extendedTextMessage/.test(mime)
+  if (!m.quoted && type) {
+    if ((mime === 'imageMessage')) {
+      conn.sendMessage(m.chat, { image: await m.download?.(), mentions: participants.map(u => conn.decodeJid(u.id)), caption: text ? text : "", mentions: participants.map(u => conn.decodeJid(u.id)) }, { quoted: m });
+    } else if ((mime === 'videoMessage')) {
+      conn.sendMessage(m.chat, { video: await m.download?.(), mentions: participants.map(u => conn.decodeJid(u.id)), mimetype: 'video/mp4', caption: text ? text : "" }, { quoted: m })
+    } else if ((mime === ("conversation") || ("extendedTextMessage"))) {
+      conn.sendMessage(m.chat, { text: text ? text : "Pᴏʀɴʜᴜʙ: @whoís.yallico", mentions: participants.map(u => conn.decodeJid(u.id)) }, { quoted: m })
+    }
+  } else if (m.quoted) {
+    await conn.sendMessage(m.chat, { forward: m.quoted.fakeObj, mentions: participants.map(u => conn.decodeJid(u.id)) }, { quoted: m })
   }
-
-  // Obtener nombre del grupo
-  let groupMeta = await conn.groupMetadata(m.chat).catch(() => null)
-  let groupName = groupMeta?.subject || "Grupo"
-
-  // Watermark RAYO PREM
-  let watermark = `\n\n`
-
-  // Construir el texto final según origen
-  let baseText = text || q.text || c || ''
-  let finalText = isFromBot ? baseText : `${baseText}` // Cambiado
-
-  const msg = conn.cMod(
-    m.chat,
-    generateWAMessageFromContent(m.chat, {
-      [c.toJSON ? q.mtype : 'extendedTextMessage']: c.toJSON ? c.toJSON() : {
-        text: finalText
-      }
-    }, {
-      userJid: conn.user.id
-    }),
-    finalText,
-    conn.user.jid,
-    { mentions: users }
-  )
-
-  await conn.relayMessage(m.chat, msg.message, { messageId: msg.key.id })
 }
-
-handler.help = ['hidetag <texto>']
-handler.tags = ['grupos']
-handler.command = /^(hidetag|notify|notificar|notifi|noti|n|hidet|aviso)$/i
+handler.help = ['notify', 'hidetag']
+handler.tags = ['grupo']
+handler.command = ['hidetag', 'notify', 'n', 'noti', 'notificar', 'notif', 'aviso', 'avisar',]
 handler.group = true
 handler.admin = true
 
