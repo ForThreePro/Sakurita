@@ -2,7 +2,7 @@ const linkRegex = /chat\.whatsapp\.com\/(?:invite\/)?([0-9A-Za-z]{20,24})/i
 const channelLinkRegex = /whatsapp\.com\/channel\/([0-9A-Za-z]{20,30})/i
 
 const handler = async (m, { conn, args, isAdmin, isOwner }) => {
-    if (!isAdmin &&!isOwner) throw `╭─❒ *『 𝗧𝗘𝗔𝗠 𝗡𝗜𝗚𝗛𝗧𝗪𝗜𝗦𝗛 』* ❒
+    if (!isAdmin &&!isOwner) throw `╭─❒ *『 𝗖𝗬𝗕𝗘𝗥 𝗕𝗢𝗧 』* ❒
 │ 🛡️ *ACCESO DENEGADO*
 │ Solo *ADMINS* pueden usar esto
 ╰─────────────────❒`
@@ -12,30 +12,30 @@ const handler = async (m, { conn, args, isAdmin, isOwner }) => {
 
     if (/on/i.test(args[0])) {
         chat.antiLink = true
-        await conn.reply(m.chat, `╭─❒ *『 𝗧𝗘𝗔𝗠 𝗡𝗜𝗚𝗛𝗧𝗪𝗜𝗦𝗛 』* ❒
+        await conn.reply(m.chat, `╭─❒ *『 𝗖𝗬𝗕𝗘𝗥 𝗕𝗢𝗧 』* ❒
 │ ⚡ *ANTI-LINK ACTIVADO*
 │
-│ 🌙 *Estado:* ENCENDIDO
+│ 🤖 *Estado:* ENCENDIDO
 │ 🛡️ *Bloqueo:* Grupos + Canales
-│ ⛈️ *El trueno vigila el grupo*
+│ ⚡ *El sistema vigila el grupo*
 ╰─────────────────❒`, m)
     } else if (/off/i.test(args[0])) {
         chat.antiLink = false
-        await conn.reply(m.chat, `╭─❒ *『 𝗧𝗘𝗔𝗠 𝗡𝗜𝗚𝗛𝗧𝗪𝗜𝗦𝗛 』* ❒
+        await conn.reply(m.chat, `╭─❒ *『 𝗖𝗬𝗕𝗘𝗥 𝗕𝗢𝗧 』* ❒
 │ ❌ *ANTI-LINK DESACTIVADO*
 │
-│ 🌙 *Estado:* APAGADO
+│ 🤖 *Estado:* APAGADO
 │ ✅ *Ya se pueden enviar links*
 ╰─────────────────❒`, m)
     } else {
-        await conn.reply(m.chat, `╭─❒ *『 𝗧𝗘𝗔𝗠 𝗡𝗜𝗚𝗛𝗧𝗪𝗜𝗦𝗛 』* ❒
-│ 🌩️ *PANEL ANTI-LINK*
+        await conn.reply(m.chat, `╭─❒ *『 𝗖𝗬𝗕𝗘𝗥 𝗕𝗢𝗧 』* ❒
+│ 💻 *PANEL ANTI-LINK*
 │
 │ 📌 *Uso:*.antilink on /.antilink off
 │ ⚡ *Función:* Bloquea links externos
 │ 🛡️ *Protege:* Spam de grupos y canales
 │
-│ 🌙 *Mantén limpio el grupo*
+│ 🤖 *Mantén seguro el sistema*
 ╰─────────────────❒`, m)
     }
 }
@@ -67,14 +67,14 @@ handler.before = async function (m, { conn, isAdmin, isBotAdmin }) {
         await conn.sendMessage(m.chat, { delete: m.key })
         await conn.reply(
             m.chat,
-            `╭─❒ *『 𝗧𝗘𝗔𝗠 𝗡𝗜𝗚𝗛𝗧𝗪𝗜𝗦𝗛 』* ❒
-│ ⛈️ *¡ENLACE PROHIBIDO!*
+            `╭─❒ *『 𝗖𝗬𝗕𝗘𝗥 𝗕𝗢𝗧 』* ❒
+│ ⚠️ *¡ENLACE NO AUTORIZADO!*
 │
 │ 🚮 *Usuario:* @${m.sender.split('@')[0]}
 │ ⚡ *Motivo:* Enviar link externo
-│ 🛡️ *Acción:* Expulsado del grupo
+│ 🛡️ *Acción:* Expulsado del sistema
 │
-│ > *Regla:* Nada de spam 🌙*
+│ > *Regla:* Prohibido el spam 🤖*
 ╰─────────────────❒`,
             m,
             { mentions: [m.sender] }
