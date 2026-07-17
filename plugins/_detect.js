@@ -17,115 +17,115 @@ handler.before = async function (m, { conn, groupMetadata }) {
 
     switch (m.messageStubType) {
         case 21: // Cambiar nombre
-            txt = `╭─❒ *『 𝗧𝗘𝗔𝗠 𝗡𝗜𝗚𝗛𝗧𝗪𝗜𝗦𝗛 』* ❒
-│ 🌙 *REGISTRO DEL GRUPO*
+            txt = `╭─❒ *『 𝗖𝗬𝗕𝗘𝗥 𝗕𝗢𝗧 』* ❒
+│ ⚡ *REGISTRO DEL SISTEMA*
 │
 │ 📢 *CAMBIO DE NOMBRE*
 │ 👤 *Usuario:* ${usuario}
 │ 📝 *Nuevo:* _${m.messageStubParameters[0]}_
-│ 🌩️ *Grupo:* ${group}
+│ 💻 *Grupo:* ${group}
 │
-│ > *“El trueno ha renombrado”* ⚡
+│ > *“Sistema renombrado correctamente”* 🤖
 ╰─────────────────❒`; break
 
         case 22: // Cambiar foto
-            txt = `╭─❒ *『 𝗧𝗘𝗔𝗠 𝗡𝗜𝗚𝗛𝗧𝗪𝗜𝗦𝗛 』* ❒
-│ 🌙 *REGISTRO DEL GRUPO*
+            txt = `╭─❒ *『 𝗖𝗬𝗕𝗘𝗥 𝗕𝗢𝗧 』* ❒
+│ ⚡ *REGISTRO DEL SISTEMA*
 │
 │ 📸 *CAMBIO DE FOTO*
 │ 👤 *Usuario:* ${usuario}
 │ 🖼️ *Nueva imagen establecida*
-│ 🌩️ *Grupo:* ${group}
+│ 💻 *Grupo:* ${group}
 │
-│ > *“Que brille bajo la noche”* ⚡
+│ > *“Imagen actualizada en el sistema”* 🤖
 ╰─────────────────❒`; break
 
         case 23: // Cambiar link
-            txt = `╭─❒ *『 𝗧𝗘𝗔𝗠 𝗡𝗜𝗚𝗛𝗧𝗪𝗜𝗦𝗛 』* ❒
-│ ⛈️ *ALERTA DE SEGURIDAD*
+            txt = `╭─❒ *『 𝗖𝗬𝗕𝗘𝗥 𝗕𝗢𝗧 』* ❒
+│ 🛡️ *ALERTA DE SEGURIDAD*
 │
 │ 🔗 *LINK RESETEADO*
 │ 👤 *Usuario:* ${usuario}
-│ 🌩️ *Grupo:* ${group}
+│ 💻 *Grupo:* ${group}
 │
-│ > *“El portal ha sido alterado”* ⚡
+│ > *“Protocolo de enlace modificado”* ⚡
 ╰─────────────────❒`; break
 
         case 25: // Cambiar ajustes
-            txt = `╭─❒ *『 𝗧𝗘𝗔𝗠 𝗡𝗜𝗚𝗛𝗧𝗪𝗜𝗦𝗛 』* ❒
+            txt = `╭─❒ *『 𝗖𝗬𝗕𝗘𝗥 𝗕𝗢𝗧 』* ❒
 │ 🛡️ *AJUSTES MODIFICADOS*
 │
 │ 👤 *Usuario:* ${usuario}
 │ ⚙️ *Permisos:* ${m.messageStubParameters[0] == 'on'? '*SOLO ADMINS* 🔒' : '*TODOS* 🔓'}
 │ 📊 *Edición de info de grupo*
 │
-│ > *“El control cambió de manos”* ⚡
+│ > *“Permisos del sistema actualizados”* ⚡
 ╰─────────────────❒`; break
 
         case 26: // Abrir/Cerrar
-            txt = `╭─❒ *『 𝗧𝗘𝗔𝗠 𝗡𝗜𝗚𝗛𝗧𝗪𝗜𝗦𝗛 』* ❒
-│ 🌙 *ESTADO DEL CHAT*
+            txt = `╭─❒ *『 𝗖𝗬𝗕𝗘𝗥 𝗕𝗢𝗧 』* ❒
+│ 💻 *ESTADO DEL SISTEMA*
 │
 │ 👤 *Usuario:* ${usuario}
 │ 🗣️ *Modo:* ${m.messageStubParameters[0] == 'on'? '*SOLO ADMINS* 🔒' : '*TODOS* 🔓'}
 │ 📢 *Grupo:* ${m.messageStubParameters[0] == 'on'? 'CERRADO' : 'ABIERTO'}
 │
-│ > *“Que se escuche el trueno”* ⚡
+│ > *“Modo de comunicación actualizado”* 🤖
 ╰─────────────────❒`; break
 
         case 29: // Dar admin
-            txt = `╭─❒ *『 𝗧𝗘𝗔𝗠 𝗡𝗜𝗚𝗛𝗧𝗪𝗜𝗦𝗛 』* ❒
-│ 👑 *ASCENSO DIVINO*
+            txt = `╭─❒ *『 𝗖𝗬𝗕𝗘𝗥 𝗕𝗢𝗧 』* ❒
+│ 👑 *ASCENSO DE RANGO*
 │
 │ ⚡ *Nuevo Admin:* @${m.messageStubParameters[0].split('@')[0]}
 │ 👤 *Otorgado por:* ${usuario}
-│ 🌙 *Rango:* Administrador
+│ 💻 *Rango:* Administrador
 │
-│ > *“Que gobierne con poder”* ⚡
+│ > *“Acceso de administrador concedido”* ⚡
 ╰─────────────────❒`; break
 
         case 30: // Quitar admin
-            txt = `╭─❒ *『 𝗧𝗘𝗔𝗠 𝗡𝗜𝗚𝗛𝗧𝗪𝗜𝗦𝗛 』* ❒
-│ 📉 *DESTITUCIÓN*
+            txt = `╭─❒ *『 𝗖𝗬𝗕𝗘𝗥 𝗕𝗢𝗧 』* ❒
+│ 📉 *RANGO REVOCADO*
 │
-│ 💥 *Admin caído:* @${m.messageStubParameters[0].split('@')[0]}
+│ 💥 *Admin removido:* @${m.messageStubParameters[0].split('@')[0]}
 │ 👤 *Ejecutado por:* ${usuario}
-│ 🗑️ *Rango removido*
+│ 🗑️ *Permisos eliminados*
 │
-│ > *“El rayo no perdona”* ⚡
+│ > *“Acceso de administrador revocado”* ⚡
 ╰─────────────────❒`; break
 
         case WAMessageStubType.GROUP_PARTICIPANT_ADD:
-            txt = `╭─❒ *『 𝗧𝗘𝗔𝗠 𝗡𝗜𝗚𝗛𝗧𝗪𝗜𝗦𝗛 』* ❒
-│ 🌩️ *NUEVO INTEGRANTE*
+            txt = `╭─❒ *『 𝗖𝗬𝗕𝗘𝗥 𝗕𝗢𝗧 』* ❒
+│ 🤖 *NUEVO USUARIO CONECTADO*
 │
 │ 🔥 *Bienvenido:* @${m.messageStubParameters[0].split('@')[0]}
-│ 🌙 *Grupo:* ${group}
-│ ⚡ *Estado:* Ingreso registrado
+│ 💻 *Sistema:* ${group}
+│ ⚡ *Estado:* Conexión registrada
 │
-│ > *“Prepárate para la tormenta”* ⛈️
+│ > *“Nuevo nodo agregado al sistema”* ⚡
 ╰─────────────────❒`; break
 
         case WAMessageStubType.GROUP_PARTICIPANT_LEAVE:
-            txt = `╭─❒ *『 𝗧𝗘𝗔𝗠 𝗡𝗜𝗚𝗛𝗧𝗪𝗜𝗦𝗛 』* ❒
-│ 💨 *SALIDA REGISTRADA*
+            txt = `╭─❒ *『 𝗖𝗬𝗕𝗘𝗥 𝗕𝗢𝗧 』* ❒
+│ 💨 *DESCONEXIÓN REGISTRADA*
 │
 │ 😔 *Se fue:* @${m.messageStubParameters[0].split('@')[0]}
-│ 🌙 *Grupo:* ${group}
-│ 🌫️ *Estado:* Abandonó el grupo
+│ 💻 *Sistema:* ${group}
+│ 🌫️ *Estado:* Abandonó el sistema
 │
-│ > *“Que los vientos lo guíen”* ⚡
+│ > *“Nodo desconectado”* 🤖
 ╰─────────────────❒`; break
 
         case WAMessageStubType.GROUP_PARTICIPANT_REMOVE:
-            txt = `╭─❒ *『 𝗧𝗘𝗔𝗠 𝗡𝗜𝗚𝗛𝗧𝗪𝗜𝗦𝗛 』* ❒
+            txt = `╭─❒ *『 𝗖𝗬𝗕𝗘𝗥 𝗕𝗢𝗧 』* ❒
 │ 🚮 *EXPULSIÓN EJECUTADA*
 │
 │ 💣 *Eliminado:* @${m.messageStubParameters[0].split('@')[0]}
 │ 👤 *Por orden de:* ${usuario}
-│ ⛈️ *Causa:* Violación de reglas
+│ ⚡ *Causa:* Violación de protocolos
 │
-│ > *“El trueno ha juzgado”* ⚡
+│ > *“Protocolo de seguridad aplicado”* 🤖
 ╰─────────────────❒`; break
     }
 
