@@ -37,7 +37,7 @@ let handler = async (m, { conn, groupMetadata, text, command, usedPrefix }) => {
 
 *${userName}*
 🔥 *YA TE HAN PENETRADO!*`
-        return conn.reply(m.chat, responseMessage, null, { mentions: [user] })
+        return conn.reply(m.chat, responseMessage, null, { mentions: })
     }
 
     // 3. COMANDO:.follar
@@ -49,41 +49,7 @@ let handler = async (m, { conn, groupMetadata, text, command, usedPrefix }) => {
         return conn.sendMessage(m.chat, {react: {text: '👌🏼', key: abrazo.key}})
     }
 
-    // 4. COMANDO:.kchero.kchera.folladora.follador
-    if(/^kchero|kchera|folladora|follador$/i.test(command)){
-        if (!text) throw `*[⚠️ ERROR ⚠️]*\n\n*ESCRIBE EL NOMBRE DE DOS PERSONAS PARA CALCULAR SU ATRACCIÓN SEXUAL*\n*Ejemplo: ${usedPrefix + command} Juan Maria*`
-        let [text1,...text2] = text.split(' ')
-        text2 = (text2 || []).join(' ')
-        if (!text2) throw `*[⚠️ ERROR ⚠️]*\n\n*ESCRIBE EL NOMBRE DE LA SEGUNDA PERSONA*`
-
-        let love = `_🥵 *${text1}* tu oportunidad de cogerte a *${text2}* es de *${Math.floor(Math.random() * 100)}%* 👉👌_\n\n¡Fóllal@ de una vez! con el comando *${usedPrefix}follar ${text2}*`
-        return m.reply(love)
-    }
-
-    // 5. COMANDO:.love.amor
-    if(/^(love|amor)$/i.test(command)){
-        if(!text) return m.reply(`*Ejemplo: ${usedPrefix + command} @usuario*`)
-
-        const lovePercentage = Math.floor(Math.random() * 100)
-        const isHighLove = lovePercentage >= 50
-        const loveMessages = ["¡Eso es un amor ardiente y apasionado! ¡Ve y díselo ahora mismo!", "Parece que hay una chispa entre ustedes dos. ¡Inténtalo!", "Podría haber algo especial aquí. ¡Dale una oportunidad!"]
-        const notSoHighLoveMessages = ["A veces, la amistad es el comienzo de algo hermoso, pero no siempre se convierte en amor.", "El amor no es todo, ¡la amistad también es genial!", "Recuerda que las mejores relaciones comienzan con una buena amistad."]
-        const loveDescription = isHighLove? "tienen una conexión profunda y un amor" : "tienen una conexión especial, aunque en el amor su porcentaje es"
-        const getRandomMessage = (messages) => messages[Math.floor(Math.random() * messages.length)]
-        const loveMessage = isHighLove? getRandomMessage(loveMessages) : getRandomMessage(notSoHighLoveMessages)
-
-        const response = `━━━━━━━⬣ *LOVE* ⬣━━━━━━━\n*❥ En el universo del amor, ${text} y @${m.sender.split('@')[0]} ${loveDescription} del ${lovePercentage}% de un 100%*\n\n*❥ ${loveMessage}*\n━━━━━━━⬣ *LOVE* ⬣━━━━━━━`
-
-        let { key } = await conn.sendMessage(m.chat, {text: `*💞 ¡Calculando Porcentaje! 💞*`, mentions: conn.parseMention(response)}, {quoted: m})
-        let hawemod = ["《 █▒》10%","《 ████▒》30%","《 ███████▒》50%","《 ██████████▒》80%","《 ████████████》100%"]
-        for (let i = 0; i < hawemod.length; i++) {
-            await new Promise(resolve => setTimeout(resolve, 800))
-            await conn.sendMessage(m.chat, {text: hawemod[i], edit: key, mentions: conn.parseMention(response)}, {quoted: m})
-        }
-        return conn.sendMessage(m.chat, {text: response, edit: key, mentions: conn.parseMention(response)}, {quoted: m})
-    }
-
-    // 6. COMANDO:.nalga
+    // 4. COMANDO:.nalga
     if(command === 'nalga'){
         let who = m.mentionedJid[0]? m.mentionedJid[0] : m.quoted? m.quoted.sender : text? text.replace(/[^0-9]/g, '') + '@s.whatsapp.net' : false
         if (!who) return m.reply(`*✳️ menciona a quien deseas agarrarle la nalga*\n\n*📌 ejemplo :*\n${usedPrefix + command} @tag`)
@@ -91,20 +57,10 @@ let handler = async (m, { conn, groupMetadata, text, command, usedPrefix }) => {
         const abrazo = await conn.reply(m.chat, `@${m.sender.split('@')[0]} le esta agarrando la nalga a @${who.split('@')[0]}`, m, {mentions: [who, m.sender]})
         return conn.sendMessage(m.chat, {react: {text: '🍑', key: abrazo.key}})
     }
-
-    // 7. COMANDO:.zorra
-    if(command === 'zorra'){
-        let userMentioned = m.mentionedJid[0]
-        if (!userMentioned) throw '🥵 *MENCIONA A UN USUARIO PARA CALCULAR SU PORCENTAJE DE ZORRA.*'
-
-        let zorraPercentage = Math.floor(Math.random() * 101)
-        let zorraMessage = `━━━━━━━━━━━━━━━\n🥵 *${conn.getName(userMentioned)}*, eres más zorra que tu madre en 4 patas y tienes un ${zorraPercentage}% de serlo!\n━━━━━━━━━━━━━━━`
-        return m.reply(zorraMessage, null, { mentions: [userMentioned] })
-    }
 }
 
-handler.help = ['formartrio', 'penetrar @user', 'follar @user', 'kchero nombre1 nombre2', 'love @user', 'nalga @user', 'zorra @user']
+handler.help = ['formartrio', 'penetrar @user', 'follar @user', 'nalga @user']
 handler.tags = ['fun']
-handler.command = /^(formartrio|formartrios|penetrar|penetrado|follar|kchero|kchera|folladora|follador|love|amor|nalga|zorra)$/i
+handler.command = /^(formartrio|formartrios|penetrar|penetrado|follar|nalga)$/i
 handler.group = true
 export default handler
