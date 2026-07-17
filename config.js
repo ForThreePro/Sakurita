@@ -14,17 +14,17 @@ global.owner = [
 global.mods = []
 global.prems = []
 
-global.packname = `[ 𝙉𝙤𝙭 𝘽ο𝙩 🌃`
-global.author = '𝙉𝙤𝙭 𝘽ο𝙩 𝙈𝘿 🌃]'
-global.stickpack = '© 𝙉𝙤𝙭 𝘽ο𝙩 𝙈𝘿 🌃'
-global.stickauth = '𝘽𝙮 𝙉𝙤𝙭 𝘽ο𝙩'
-global.wm = '𝙉𝙤𝙭 🌃'
-global.botname = '[ 𝙉𝙤𝙭 𝘽ο𝙩 𝙈𝘿 🌃 ]'
-global.textbot = `𝙋ο𝙬𝙚𝙧𝙚𝙙 𝙗𝙮 𝙉𝙤𝙭 🌀`
-global.dev = '• 𝙋ο𝙬𝙚𝙧𝙚𝙙 𝙗𝙮 𝘾ο𝙢𝙢𝙪𝙣𝙞𝙩𝙮 𝙉𝙤𝙭 𝘽ο𝙩 𝙈𝘿 🌃'
-global.wait = '🌪️ *𝘼𝙜𝙪𝙖𝙧𝙙𝙚 𝙪𝙣 𝙢ο𝙢𝙚𝙣𝙩ο, 𝙨ο𝙮 𝙡𝙚𝙣𝙩ο... ฅ^•ﻌ•^ฅ\n\n> 𝙉𝙤𝙭 𝘽ο𝙩 𝙈𝘿 🌃 🌪️*'
-global.listo = '*𝘼𝙦𝙪𝙞 𝙩𝙞𝙚𝙣𝙚 ฅ^•ﻌ•^ฅ*'
-global.namechannel = '𝙉𝙤𝙭 𝘽ο𝙩 𝙈𝘿 🌃'
+global.packname = `[ 𝘾𝙮𝙗𝙚𝙧 𝘽ο𝙩 ⚡`
+global.author = '𝘾𝙮𝙗𝙚𝙧 𝘽ο𝙩 𝙈𝘿 ⚡]'
+global.stickpack = '© 𝘾𝙮𝙗𝙚𝙧 𝘽ο𝙩 𝙈𝘿 ⚡'
+global.stickauth = '𝘽𝙮 𝘾𝙮𝙗𝙚𝙧 𝘽ο𝙩'
+global.wm = '𝘾𝙮𝙗𝙚𝙧 ⚡'
+global.botname = '[ 𝘾𝙮𝙗𝙚𝙧 𝘽ο𝙩 𝙈𝘿 ⚡ ]'
+global.textbot = `𝙋ο𝙬𝙚𝙧𝙚𝙙 𝙗𝙮 𝘾𝙮𝙗𝙚𝙧 🌀`
+global.dev = '• 𝙋ο𝙬𝙚𝙧𝙚𝙙 𝙗𝙮 𝘾ο𝙢𝙢𝙪𝙣𝙞𝙩𝙮 𝘾𝙮𝙗𝙚𝙧 𝘽ο𝙩 𝙈𝘿 ⚡'
+global.wait = '⚡ *𝘼𝙜𝙪𝙖𝙧𝙙𝙚 𝙪𝙣 𝙢ο𝙢𝙚𝙣𝙩ο, 𝙚𝙨𝙘𝙖𝙣𝙚𝙖𝙣𝙙𝙤 𝙨𝙞𝙨𝙩𝙚𝙢𝙖... 🤖\n\n> 𝘾𝙮𝙗𝙚𝙧 𝘽ο𝙩 𝙈𝘿 ⚡*'
+global.listo = '*𝘼𝙦𝙪𝙞 𝙩𝙞𝙚𝙣𝙚 𝙟𝙚𝙛𝙚 🤖*'
+global.namechannel = '𝘾𝙮𝙗𝙚𝙧 𝘽ο𝙩 𝙈𝘿 ⚡'
 global.channel = 'https://whatsapp.com/channel/0029Vaua0ZD3gvWjQaIpSy18'
 
 global.rayo = fs.readFileSync('./storage/img/rayo.jpg')
@@ -41,7 +41,7 @@ global.estilo = {
   }, 
   message: { 
     orderMessage: { 
-      itemCount: -999999, 
+      itemCount: -999, 
       status: 1, 
       surface: 1, 
       message: global.packname, 
