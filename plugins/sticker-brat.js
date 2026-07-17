@@ -24,15 +24,15 @@ const fetchSticker = async (text, attempt = 1) => {
 let handler = async (m, { conn, text, usedPrefix, command }) => {
     if (!text) {
         return conn.sendMessage(m.chat, {
-            text: `⚡ *Rayo Prem Bot* ⚡\n\n😒 ¿Y el texto, genio?\n\n📌 *Usa:* ${usedPrefix}${command} tu texto aquí\n\n*Ejemplo:* ${usedPrefix}${command} Team Nightwish`,
+            text: `💻 *Cyber Bot* 💻\n\n😒 ¿Y el texto, genio?\n\n📌 *Usa:* ${usedPrefix}${command} tu texto aquí\n*Ejemplo:* ${usedPrefix}${command} Cyber Bot`,
         }, { quoted: m });
     }
 
-    await conn.sendMessage(m.chat, { react: { text: '⚡', key: m.key } });
+    await conn.sendMessage(m.chat, { react: { text: '💻', key: m.key } });
 
     try {
         const buffer = await fetchSticker(text);
-        const stiker = await sticker(buffer, false, 'Team Nightwish', 'Rayo Prem Bot');
+        const stiker = await sticker(buffer, false, 'Cyber Bot', 'Cyber Bot');
 
         if (stiker) {
             await conn.sendMessage(m.chat, { react: { text: '✅', key: m.key } });
@@ -44,13 +44,13 @@ let handler = async (m, { conn, text, usedPrefix, command }) => {
         console.error('[BRAT ERROR]', err);
         await conn.sendMessage(m.chat, { react: { text: '❌', key: m.key } });
         return conn.sendMessage(m.chat, {
-            text: `💀 *Rayo Prem Bot* \n\nError al generar el sticker:\n${err.message || 'La API está saturada, intenta en 5 seg'}`,
+            text: `💀 *Cyber Bot* \n\nError al generar el sticker:\n${err.message || 'La API está saturada, intenta en 5 seg'}`,
         }, { quoted: m });
     }
 };
 
 handler.command = ['brat', 'bratt'];
-handler.tags = ['sticker', 'nightwish'];
+handler.tags = ['sticker', 'cyber'];
 handler.help = ['brat *<texto>*'];
 handler.group = false;
 handler.register = false; // pon true si quieres que solo usuarios registrados lo usen
