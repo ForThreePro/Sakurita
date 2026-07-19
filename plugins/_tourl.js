@@ -5,12 +5,12 @@ import { fileTypeFromBuffer } from "file-type"
 let handler = async (m, { conn }) => {
   let q = m.quoted ? m.quoted : m
   let mime = (q.msg || q).mimetype || ''
-  if (!mime) return conn.reply(m.chat, `╭─❒ *『 𝗖𝗬𝗕𝗘𝗥 𝗕𝗢𝗧 』* ❒
-│ ⚠️ *ERROR DE SISTEMA*
+  if (!mime) return conn.reply(m.chat, `🌸╭─── SAKURITA BOT ───╮🌸
+│ 🥀 *ERROR DEL JARDÍN*
 │
-│ 🤖 *Responde a un archivo válido*
-│ ⚡ *Formatos:* Imagen, Video, Audio, Doc
-╰─────────────────❒`, m)
+│ 🌷 *Responde a un archivo válido*
+│ 🌸 *Formatos:* Imagen, Video, Audio, Doc
+╰───────────────────────╯`, m)
 
   try {
     await conn.sendMessage(m.chat, { react: { text: '⏳', key: m.key } })
@@ -20,28 +20,28 @@ let handler = async (m, { conn }) => {
 
     if (!link.success) throw new Error()
 
-    let txt = `╭─❒ *『 𝗖𝗬𝗕𝗘𝗥 𝗕𝗢𝗧 』* ❒
-│ ☁️ *ARCHIVO SUBIDO A LA NUBE*
+    let txt = `🌸╭─── SAKURITA BOT ───╮🌸
+│ ☁️ *PÉTALO GUARDADO EN LA NUBE*
 │
 │ 🔗 *Enlace:* ${link.url}
 │ 🆔 *ID:* ${link.id}
 │ 📊 *Tamaño:* ${formatBytes(media.length)}
-│ ⚡ *Servidor:* evogb.win
+│ 🌷 *Servidor:* evogb.win
 │
-│ > *“Archivo almacenado en el servidor”*
-╰─────────────────❒`
+│ > *“Pétalo almacenado en el jardín”*
+╰───────────────────────╯`
 
     await conn.sendFile(m.chat, media, 'file.' + link.url.split('.').pop(), txt, m)
     await conn.sendMessage(m.chat, { react: { text: '✅', key: m.key } })
   } catch (e) {
     console.error(e)
     await conn.sendMessage(m.chat, { react: { text: '❌', key: m.key } })
-    await conn.reply(m.chat, `╭─❒ *『 𝗖𝗬𝗕𝗘𝗥 𝗕𝗢𝗧 』* ❒
-│ ❌ *ERROR DE SUBIDA*
+    await conn.reply(m.chat, `🌸╭─── SAKURITA BOT ───╮🌸
+│ 🥀 *ERROR DE SUBIDA*
 │
-│ ⚡ *No se pudo subir el archivo*
-│ 🤖 *Intenta de nuevo en unos seg*
-╰─────────────────❒`, m)
+│ 🌷 *No se pudo subir el archivo*
+│ 🌸 *Intenta de nuevo en unos seg*
+╰───────────────────────╯`, m)
   }
 }
 
