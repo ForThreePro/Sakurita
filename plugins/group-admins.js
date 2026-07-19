@@ -1,11 +1,11 @@
 const handler = async (m, { conn, command }) => {
   if (!m.mentionedJid[0] &&!m.quoted) {
-    let texto = `╭─❒ *『 𝗖𝗬𝗕𝗘𝗥 𝗕𝗢𝗧 』* ❒
-│ 🛡️ *CONTROL DE ADMIN*
+    let texto = `🌸╭─── SAKURITA BOT ───╮🌸
+│ 🌷 *CONTROL DEL JARDÍN*
 │
-│ ⚡ *Menciona o responde al usuario*
-│ 💻 *para ${command === 'promote' || command === 'promover' || command === 'daradmin'? 'promover' : 'degradar'} como administrador*
-╰─────────────────❒`
+│ 🌸 *Menciona o responde al pétalo*
+│ 🌷 *para ${command === 'promote' || command === 'promover' || command === 'daradmin'? 'promover' : 'degradar'} como jardinero*
+╰───────────────────────╯`
     return m.reply(texto, m.chat, { mentions: conn.parseMention(texto) })
   }
 
@@ -13,22 +13,22 @@ const handler = async (m, { conn, command }) => {
   let action = /^(promote|promover|daradmin)$/i.test(command)? 'promote' : 'demote'
 
   let msgAccion = action === 'promote'
-  ? `╭─❒ *『 𝗖𝗬𝗕𝗘𝗥 𝗕𝗢𝗧 』* ❒
-│ ⚡ *PROMOCIÓN*
+ ? `🌸╭─── SAKURITA BOT ───╮🌸
+│ 🌷 *PROMOCIÓN DE PÉTALO*
 │
-│ 👑 *@${user.split('@')[0]} ahora es Administrador*
-│ 🤖 *Acción por:* @${m.sender.split('@')[0]}
+│ 👑 *@${user.split('@')[0]} ahora es Jardinero*
+│ 🌸 *Acción por:* @${m.sender.split('@')[0]}
 │
-│ > *“Permisos otorgados por el sistema”*
-╰─────────────────❒`
-    : `╭─❒ *『 𝗖𝗬𝗕𝗘𝗥 𝗕𝗢𝗧 』* ❒
-│ ❌ *DEGRADACIÓN*
+│ > *“Permisos florecidos por el jardín”*
+╰───────────────────────╯`
+    : `🌸╭─── SAKURITA BOT ───╮🌸
+│ 🥀 *PODADO DE PÉTALO*
 │
-│ 🛡️ *@${user.split('@')[0]} ya no es Administrador*
-│ 🤖 *Acción por:* @${m.sender.split('@')[0]}
+│ 🌫️ *@${user.split('@')[0]} ya no es Jardinero*
+│ 🌸 *Acción por:* @${m.sender.split('@')[0]}
 │
-│ > *“Permisos revocados por el sistema”*
-╰─────────────────❒`
+│ > *“Permisos marchitados por el jardín”*
+╰───────────────────────╯`
 
   await conn.groupParticipantsUpdate(m.chat, [user], action)
   m.reply(msgAccion, m.chat, { mentions: [user, m.sender] })
