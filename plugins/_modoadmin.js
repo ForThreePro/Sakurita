@@ -1,43 +1,43 @@
 const handler = async (m, { conn, args, isAdmin, isOwner }) => {
     // Validación de permisos para el comando
-    if (!isAdmin &&!isOwner) throw `╭─❒ *『 𝗖𝗬𝗕𝗘𝗥 𝗕𝗢𝗧 』* ❒
+    if (!isAdmin &&!isOwner) throw `🌸╭─── SAKURITA BOT ───╮🌸
 │ 🛡️ *ACCESO DENEGADO*
 │ Solo *ADMINS* pueden usar esto
-╰─────────────────❒`
+╰───────────────────────╯`
 
     let chat = global.db.data.chats[m.chat]
     if (!chat) global.db.data.chats[m.chat] = {}
 
     if (/on/i.test(args[0])) {
         chat.modoadmin = true
-        await conn.reply(m.chat, `╭─❒ *『 𝗖𝗬𝗕𝗘𝗥 𝗕𝗢𝗧 』* ❒
-│ ⚡ *MODO ADMIN ACTIVADO*
+        await conn.reply(m.chat, `🌸╭─── SAKURITA BOT ───╮🌸
+│ 🌷 *JARDÍN PRIVADO*
 │
-│ 🤖 *Estado:* ENCENDIDO
+│ 🌸 *Estado:* ACTIVO
 │ 🛡️ *Restricción:* Solo Admins
-│ ⚡ *Los comandos están bloqueados*
+│ 🌷 *Los comandos están bloqueados*
 │
-│ > *“Protocolo de seguridad activo”*
-╰─────────────────❒`, m)
+│ > *“Solo los cuidadores pueden podar”*
+╰───────────────────────╯`, m)
     } else if (/off/i.test(args[0])) {
         chat.modoadmin = false
-        await conn.reply(m.chat, `╭─❒ *『 𝗖𝗬𝗕𝗘𝗥 𝗕𝗢𝗧 』* ❒
-│ ❌ *MODO ADMIN DESACTIVADO*
+        await conn.reply(m.chat, `🌸╭─── SAKURITA BOT ───╮🌸
+│ 🥀 *JARDÍN PÚBLICO*
 │
-│ 🤖 *Estado:* APAGADO
+│ 🌸 *Estado:* DESACTIVADO
 │ ✅ *Todos pueden usar el bot*
-│ ⚡ *Sistema libre nuevamente*
-╰─────────────────❒`, m)
+│ 🌷 *Jardín abierto nuevamente*
+╰───────────────────────╯`, m)
     } else {
-        await conn.reply(m.chat, `╭─❒ *『 𝗖𝗬𝗕𝗘𝗥 𝗕𝗢𝗧 』* ❒
-│ 💻 *PANEL MODO ADMIN*
+        await conn.reply(m.chat, `🌸╭─── SAKURITA BOT ───╮🌸
+│ 💮 *PANEL DEL JARDÍN*
 │
 │ 📌 *Uso:*.modoadmin on /.modoadmin off
-│ ⚡ *Función:* Restringe comandos a admins
+│ 🌷 *Función:* Restringe comandos a admins
 │ 🛡️ *Protege:* Uso indebido del bot
 │
-│ 🤖 *Control total del sistema*
-╰─────────────────❒`, m)
+│ 🌸 *Control total del jardín*
+╰───────────────────────╯`, m)
     }
 }
 
@@ -57,13 +57,13 @@ handler.before = async function (m, { conn, isAdmin, isOwner, isROwner, isPrems 
         if (chat.modoadmin &&!isAdmin &&!isOwner &&!isROwner &&!isPrems) {
             // Si el usuario intenta usar un comando (empieza con prefijo), bloqueamos
             if (m.text.startsWith('.') || m.text.startsWith('/') || m.text.startsWith('#')) {
-                await conn.reply(m.chat, `╭─❒ *『 𝗖𝗬𝗕𝗘𝗥 𝗕𝗢𝗧 』* ❒
+                await conn.reply(m.chat, `🌸╭─── SAKURITA BOT ───╮🌸
 │ ⚠️ *ACCESO RESTRINGIDO*
 │
-│ ⚡ *Modo Admin:* ACTIVO
+│ 🌷 *Jardín Privado:* ACTIVO
 │ ❌ *No tienes permiso*
-│ 🤖 *Solo admins pueden usar comandos*
-╰─────────────────❒`, m)
+│ 🌸 *Solo cuidadores pueden usar comandos*
+╰───────────────────────╯`, m)
                 return false // Detiene la ejecución de otros plugins
             }
         }
