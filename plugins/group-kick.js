@@ -1,47 +1,47 @@
 let handler = async (m, { conn, participants, usedPrefix, command }) => {
     let mentionedJid = m.mentionedJid && m.mentionedJid[0]? m.mentionedJid[0] : m.quoted? m.quoted.sender : null
 
-    if (!mentionedJid) return conn.reply(m.chat, `╭─❒ *『 𝗖𝗬𝗕𝗘𝗥 𝗕𝗢𝗧 』* ❒
-│ 🚮 *EXPULSAR USUARIO*
+    if (!mentionedJid) return conn.reply(m.chat, `🌸╭─── SAKURITA BOT ───╮🌸
+│ 🥀 *PODAR PÉTALO*
 │
-│ ⚡ *Menciona a un usuario o responde a un mensaje*
-╰─────────────────❒`, m)
+│ 🌷 *Menciona a un pétalo o responde a un mensaje*
+╰───────────────────────╯`, m)
 
     try {
         let groupMetadata = await conn.groupMetadata(m.chat)
         let ownerGroup = groupMetadata.owner || m.chat.split`-`[0] + '@s.whatsapp.net'
         let ownerBot = global.owner[0][0] + '@s.whatsapp.net'
 
-        if (mentionedJid === conn.user.jid) return conn.reply(m.chat, `╭─❒ *『 𝗖𝗬𝗕𝗘𝗥 𝗕𝗢𝗧 』* ❒
-│ ❌ *ERROR DE SISTEMA*
+        if (mentionedJid === conn.user.jid) return conn.reply(m.chat, `🌸╭─── SAKURITA BOT ───╮🌸
+│ 🥀 *ERROR DEL JARDÍN*
 │
-│ ⚡ *No puedo expulsarme a mi mismo*
-╰─────────────────❒`, m)
-        if (mentionedJid === ownerGroup) return conn.reply(m.chat, `╭─❒ *『 𝗖𝗬𝗕𝗘𝗥 𝗕𝗢𝗧 』* ❒
-│ ❌ *ERROR DE SISTEMA*
+│ 🌷 *No puedo podarme a mi misma*
+╰───────────────────────╯`, m)
+        if (mentionedJid === ownerGroup) return conn.reply(m.chat, `🌸╭─── SAKURITA BOT ───╮🌸
+│ 🥀 *ERROR DEL JARDÍN*
 │
-│ ⚡ *No puedo expulsar al creador del grupo*
-╰─────────────────❒`, m)
-        if (mentionedJid === ownerBot) return conn.reply(m.chat, `╭─❒ *『 𝗖𝗬𝗕𝗘𝗥 𝗕𝗢𝗧 』* ❒
-│ ❌ *ERROR DE SISTEMA*
+│ 🌷 *No puedo podar al dueño del jardín*
+╰───────────────────────╯`, m)
+        if (mentionedJid === ownerBot) return conn.reply(m.chat, `🌸╭─── SAKURITA BOT ───╮🌸
+│ 🥀 *ERROR DEL JARDÍN*
 │
-│ ⚡ *No puedo expulsar al dueño del bot*
-╰─────────────────❒`, m)
+│ 🌷 *No puedo podar al dueño del bot*
+╰───────────────────────╯`, m)
 
         await conn.groupParticipantsUpdate(m.chat, [mentionedJid], 'remove')
-        conn.reply(m.chat, `╭─❒ *『 𝗖𝗬𝗕𝗘𝗥 𝗕𝗢𝗧 』* ❒
-│ 🚮 *USUARIO EXPULSADO*
+        conn.reply(m.chat, `🌸╭─── SAKURITA BOT ───╮🌸
+│ 🥀 *PÉTALO PODADO*
 │
-│ ⚡ *@${mentionedJid.split('@')[0]} fue sacado del grupo*
-│ 💻 *Protocolo de seguridad ejecutado*
-╰─────────────────❒`, m, { mentions: [mentionedJid] })
+│ 🌷 *@${mentionedJid.split('@')[0]} fue sacado del jardín*
+│ 🌸 *Protocolo de poda ejecutado*
+╰───────────────────────╯`, m, { mentions: [mentionedJid] })
     } catch (e) {
-        conn.reply(m.chat, `╭─❒ *『 𝗖𝗬𝗕𝗘𝗥 𝗕𝗢𝗧 』* ❒
-│ ❌ *ERROR DE SISTEMA*
+        conn.reply(m.chat, `🌸╭─── SAKURITA BOT ───╮🌸
+│ 🥀 *ERROR DEL JARDÍN*
 │
-│ ⚡ *Ocurrió un problema*
-│ 🤖 *${e.message}*
-╰─────────────────❒`, m)
+│ 🌷 *Ocurrió un problema*
+│ 🌸 *${e.message}*
+╰───────────────────────╯`, m)
     }
 }
 
