@@ -6,31 +6,31 @@ let handler = async (m, { conn, args, isOwner }) => {
 
   if (/on/i.test(args[0])) {
     bot.antiSpam = true
-    await conn.reply(m.chat, `╭─❒ *『 𝗖𝗬𝗕𝗘𝗥 𝗕𝗢𝗧 』* ❒
-│ ⚡ *ANTI-SPAM ACTIVADO*
+    await conn.reply(m.chat, `🌸╭─── SAKURITA BOT ───╮🌸
+│ 🌷 *JARDÍN PROTEGIDO*
 │
-│ 🤖 *Estado:* ENCENDIDO
-│ 🛡️ *Filtro:* Stickers + Emojis
-│ ⚡ *El sistema vigila el flood*
-╰─────────────────❒`, m)
+│ 🌸 *Estado:* ACTIVO
+│ 🌷 *Filtro:* Stickers + Emojis
+│ 🌸 *Los pétalos cuidan el flood*
+╰───────────────────────╯`, m)
   } else if (/off/i.test(args[0])) {
     bot.antiSpam = false
-    await conn.reply(m.chat, `╭─❒ *『 𝗖𝗬𝗕𝗘𝗥 𝗕𝗢𝗧 』* ❒
-│ ❌ *ANTI-SPAM DESACTIVADO*
+    await conn.reply(m.chat, `🌸╭─── SAKURITA BOT ───╮🌸
+│ 🥀 *JARDÍN LIBERADO*
 │
-│ 🤖 *Estado:* APAGADO
+│ 🌸 *Estado:* DESACTIVADO
 │ ✅ *Se permiten stickers y emojis*
-╰─────────────────❒`, m)
+╰───────────────────────╯`, m)
   } else {
-    await conn.reply(m.chat, `╭─❒ *『 𝗖𝗬𝗕𝗘𝗥 𝗕𝗢𝗧 』* ❒
-│ 💻 *PANEL ANTI-SPAM*
+    await conn.reply(m.chat, `🌸╭─── SAKURITA BOT ───╮🌸
+│ 💮 *PANEL DEL JARDÍN*
 │
 │ 📌 *Uso:*.antispam on /.antispam off
-│ ⚡ *Función:* Anti flood de stickers/emojis
+│ 🌷 *Función:* Anti flood de stickers/emojis
 │ 🛡️ *Límite:* 4 avisos | 6 expulsión
 │
-│ 🤖 *Mantén el sistema limpio*
-╰─────────────────❒`, m)
+│ 🌸 *Mantén florecido tu jardín*
+╰───────────────────────╯`, m)
   }
 }
 
@@ -68,12 +68,12 @@ handler.before = async function (m, { conn, isAdmin, isBotAdmin, isOwner, isROwn
 
   if (isOwner || isROwner) {
     if (count === warnLimit) {
-      await conn.reply(m.chat, `╭─❒ *『 𝗖𝗬𝗕𝗘𝗥 𝗕𝗢𝗧 』* ❒
-│ 👑 *AVISO AL OWNER*
+      await conn.reply(m.chat, `🌸╭─── SAKURITA BOT ───╮🌸
+│ 👑 *AVISO A YALLICO*
 │
-│ ⚡ *Bájale al spam creador*
-│ 🌀 *Estás saturando el sistema*
-╰─────────────────❒`, m)
+│ 🌷 *Bájale al spam creador*
+│ 🌸 *Estás saturando el jardín*
+╰───────────────────────╯`, m)
     }
     return
   }
@@ -81,26 +81,26 @@ handler.before = async function (m, { conn, isAdmin, isBotAdmin, isOwner, isROwn
   if (m.isGroup && (isAdmin || isPrems ||!isBotAdmin)) return
 
   if (count === warnLimit) {
-    await conn.reply(m.chat, `╭─❒ *『 𝗖𝗬𝗕𝗘𝗥 𝗕𝗢𝗧 』* ❒
+    await conn.reply(m.chat, `🌸╭─── SAKURITA BOT ───╮🌸
 │ ⚠️ *¡DETECCIÓN DE SPAM!*
 │
-│ ⚡ *Usuario:* @${sender.split('@')[0]}
+│ 🌷 *Usuario:* @${sender.split('@')[0]}
 │ 📊 *Progreso:* ${count}/${kickLimit}
-│ 🤖 *Advertencia:* Baja al flood
+│ 🌸 *Advertencia:* Baja al flood
 │
-│ > *Sigue así y activa el protocolo*
-╰─────────────────❒`, m, { mentions: [sender] })
+│ > *Sigue así y marchitas el jardín*
+╰───────────────────────╯`, m, { mentions: [sender] })
   }
   else if (count >= kickLimit) {
-    await conn.reply(m.chat, `╭─❒ *『 𝗖𝗬𝗕𝗘𝗥 𝗕𝗢𝗧 』* ❒
-│ ⚡ *EXPULSIÓN EJECUTADA*
+    await conn.reply(m.chat, `🌸╭─── SAKURITA BOT ───╮🌸
+│ 🌷 *EXPULSIÓN EJECUTADA*
 │
 │ 🚮 *Usuario:* @${sender.split('@')[0]}
 │ 📌 *Causa:* Spam de stickers/emojis
-│ 🤖 *Protocolo de seguridad activado*
+│ 🌸 *Protocolo del jardín activado*
 │
-│ > *Sistema protegido por Cyber Bot*
-╰─────────────────❒`, m, { mentions: [sender] })
+│ > *Jardín protegido por Sakurita*
+╰───────────────────────╯`, m, { mentions: [sender] })
     if (m.isGroup) {
       await conn.groupParticipantsUpdate(m.chat, [sender], 'remove')
     }
