@@ -1,11 +1,11 @@
 const handler = async (m, { conn, text, command, isAdmin, isOwner }) => {
     if (!m.isGroup || (!isAdmin &&!isOwner)) {
-        return m.reply(`╭─❒ *『 𝗖𝗬𝗕𝗘𝗥 𝗕𝗢𝗧 』* ❒
-│ ❌ *ACCESO DENEGADO*
+        return m.reply(`🌸╭─── SAKURITA BOT ───╮🌸
+│ 🥀 *ACCESO AL JARDÍN DENEGADO*
 │
-│ ⚡ *Solo los admins o el dueño*
-│ 🤖 *pueden controlar el sistema*
-╰─────────────────❒`);
+│ 🌷 *Solo los jardineros o el dueño*
+│ 🌸 *pueden podar el jardín*
+╰───────────────────────╯`);
     }
 
     let chat = global.db.data.chats[m.chat]
@@ -13,36 +13,36 @@ const handler = async (m, { conn, text, command, isAdmin, isOwner }) => {
     chat = global.db.data.chats[m.chat]
 
     if (command === 'setbye') {
-        if (!text) return m.reply(`╭─❒ *『 𝗖𝗬𝗕𝗘𝗥 𝗕𝗢𝗧 』* ❒
-│ 👋 *CONFIGURAR DESPEDIDA*
+        if (!text) return m.reply(`🌸╭─── SAKURITA BOT ───╮🌸
+│ 🥀 *CONFIGURAR DESPEDIDA*
 │
-│ ⚡ *Falta el mensaje*
+│ 🌷 *Falta el mensaje*
 │
 │ 💡 *Ejemplo:*
-│ .setbye 💨 @user salió del servidor 💻
-╰─────────────────❒`);
+│ .setbye 🍂 @user se marchitó del jardín 🌸
+╰───────────────────────╯`);
         chat.customBye = text.trim();
-        return m.reply(`╭─❒ *『 𝗖𝗬𝗕𝗘𝗥 𝗕𝗢𝗧 』* ❒
+        return m.reply(`🌸╭─── SAKURITA BOT ───╮🌸
 │ ✅ *DESPEDIDA GUARDADA*
 │
 │ 📝 *Vista previa:*
 │ \`\`${text.trim()}\`\`
 │
 │ 🗑️ *Para borrar:* .delbye
-╰─────────────────❒`);
+╰───────────────────────╯`);
     }
     if (command === 'delbye') {
-        if (!chat.customBye) return m.reply(`╭─❒ *『 𝗖𝗬𝗕𝗘𝗥 𝗕𝗢𝗧 』* ❒
-│ ⚠️ *SIN DESPEDIDA*
+        if (!chat.customBye) return m.reply(`🌸╭─── SAKURITA BOT ───╮🌸
+│ 🥀 *SIN DESPEDIDA*
 │
-│ 🤖 *No tienes una despedida editada*
-╰─────────────────❒`);
+│ 🌷 *No tienes una despedida editada*
+╰───────────────────────╯`);
         delete chat.customBye;
-        return m.reply(`╭─❒ *『 𝗖𝗬𝗕𝗘𝗥 𝗕𝗢𝗧 』* ❒
+        return m.reply(`🌸╭─── SAKURITA BOT ───╮🌸
 │ ✅ *DESPEDIDA ELIMINADA*
 │
-│ 🗑️ *Se borró el mensaje personalizado*
-╰─────────────────❒`);
+│ 🗑️ *Se podó el mensaje personalizado*
+╰───────────────────────╯`);
     }
 };
 handler.help = ['setbye <Mensaje>', 'delbye'];
