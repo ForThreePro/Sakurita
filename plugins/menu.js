@@ -4,7 +4,7 @@ import os from 'os'
 
 let handler = async (m, { conn, usedPrefix }) => {
   let taguser = m.mentionedJid && m.mentionedJid[0]? m.mentionedJid[0] : m.quoted? m.quoted.sender : m.sender
-  const img = readFileSync(join(process.cwd(), 'storage', 'img', 'rayo.jpg')) // Cambiado
+  const img = readFileSync(join(process.cwd(), 'storage', 'img', 'rayo.jpg')) // Seguimos con rayo.jpg
 
   let totalUsers = Object.keys(global.db.data.users).length
   let totalCmds = Object.values(global.plugins).filter(p => p.help &&!p.disabled).length
@@ -23,20 +23,20 @@ let handler = async (m, { conn, usedPrefix }) => {
   let totalram = (os.totalmem() / 1024 / 1024 / 1024).toFixed(2)
   let ping = Math.floor(Math.random() * 80) + 20
 
-  let menuText = `ᯇ 𝗖𝗬𝗕𝗘𝗥 𝗕𝗢𝗧 💻 ୧
+  let menuText = `🌸 SAKURITA BOT 🌷
 
- ⤷ ┇ version ﹒ 3.1.5 Cyber Clean ：✿ 。
-꒰ ◞⁺⊹ ．online • ${h}h ${m2}m ${s}s
+ 🌷 ┇ version ﹒ 3.1.5 Sakurita Clean ：✿ 。
+🌸 online • ${h}h ${m2}m ${s}s
 
- ꒱ ׁ. ᘏ 𝗎𝗌𝗎⍺𝗋ⲓ𝗈 ׅ 𝆬
-🤖 @${taguser.split('@')[0]} ࣪ ꕀ ˚
-> *"Sistema conectado, domina el chat"*
+ 🌸 𝗎𝗌𝗎⍺𝗋ⲓ𝗈
+🌷 @${taguser.split('@')[0]}
+> *"El jardín florece, domina el chat"*
 
-──愛 *ESTADISTICAS* ╏ 📊
-👥 Usuarios: ${totalUsers} | 📜 Comandos: ${totalCmds}
-💾 RAM: ${ram}MB | 🌐 Servidor: ${totalram}GB
+──🌸 *ESTADISTICAS* ╏ 📊
+👥 Pétalos: ${totalUsers} | 📜 Comandos: ${totalCmds}
+💾 RAM: ${ram}MB | 🌐 Jardín: ${totalram}GB
 
-──💻 *SISTEMA* 💻──
+──🌷 *JARDÍN* 🌷──
 📅 ${dia}
 📆 ${fechaCompleta}
 🕐 ${hora} | 📡 Ping: ${ping}ms
@@ -55,28 +55,28 @@ let handler = async (m, { conn, usedPrefix }) => {
 
   let emojis = {
     'downloader': '📥', 'search': '🔍', 'config': '⚙️', 'group': '👥',
-    'info': 'ℹ️', 'fun': '🎭', 'sticker': '💻', 'owner': '👑',
+    'info': 'ℹ️', 'fun': '🎭', 'sticker': '🌸', 'owner': '👑',
     'anime': '🌸', 'rg': '💎', 'game': '🎮', 'general': '✨', 'ai': '💭'
   }
 
   for (let category in groups) {
-    let emoji = emojis[category] || '💻'
+    let emoji = emojis[category] || '🌸'
     let catName = category.toUpperCase()
-    menuText += `.⃟𖥔 ݁💻𖦹˙— \`${catName}\` —˙𖦹💻${emoji}꒷\n`
+    menuText += `🌸── \`${catName}\` ──${emoji}\n`
     for (let cmd of groups[category]) {
       menuText += ` ${emoji} ➛.${cmd}\n`
     }
-    menuText += ` ㅤ└──.✦ ── ⊰ ̟!!.✦. ˙\n\n`
+    menuText += ` 🌷──────────🌷\n\n`
   }
 
-  menuText += `💻━━━━━━━━
-🤖 *BOT:* CYBER BOT
-⚡ *Creador:* Whois Yallico 👑
-💻 *Versión:* 3.1.5 Cyber Clean
+  menuText += `🌸━━━━━━━━
+🌷 *BOT:* SAKURITA BOT
+🌸 *Cultivadora:* Whois Yallico 👑
+🌷 *Versión:* 3.1.5 Sakurita Clean
 🌐 *Web:* https://forthreepro.github.io/Whois-Yallico
 
-> *"Sistema conectado, domina el chat"* 💻
-💻━━━━━━━━`
+> *"El jardín florece, domina el chat"* 🌸
+🌸━━━━━━━━`
 
   await conn.sendMessage(m.chat, {
     image: img,
