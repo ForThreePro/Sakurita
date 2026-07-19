@@ -101,7 +101,7 @@ conn.sendMessage(m.chat, { text: `🥀 Ocurrió un problema.\n> Usa *${usedPrefi
 }}
 
 handler.tags = ['sticker']
-handler.help = ['brat', 'bratv', 'emojimix', 'qc', 'take', 'wm']
-handler.command = ['brat', 'bratv', 'emojimix', 'qc', 'take', 'wm']
+handler.help = ['brat', 'bratv']
+handler.command = ['brat', 'bratv']
 
 export default handler
