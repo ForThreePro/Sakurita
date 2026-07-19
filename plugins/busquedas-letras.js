@@ -1,45 +1,45 @@
 import axios from 'axios'
 
 let handler = async (m, { conn, text }) => {
-    if (!text) return m.reply(`╭─❒ *『 𝗖𝗬𝗕𝗘𝗥 𝗕𝗢𝗧 』* ❒
-│ 🎵 *BUSCADOR DE LETRAS*
+    if (!text) return m.reply(`🌸╭─── SAKURITA BOT ───╮🌸
+│ 🎵 *JARDÍN DE MELODÍAS*
 │
-│ 🤖 *¿Qué canción buscas?*
-│ ⚡ *Uso:*.letra Imagine Dragons
-╰─────────────────❒`)
+│ 🌷 *¿Qué canción buscas?*
+│ 🌸 *Uso:*.letra Imagine Dragons
+╰───────────────────────╯`)
 
     await m.react('🎵')
     try {
         let { data } = await axios.get(`https://api.delirius.store/search/lyrics?query=${encodeURIComponent(text)}`)
         let res = data.data
-        if (!res) return m.reply(`╭─❒ *『 𝗖𝗬𝗕𝗘𝗥 𝗕𝗢𝗧 』* ❒
-│ ❌ *SIN RESULTADOS*
+        if (!res) return m.reply(`🌸╭─── SAKURITA BOT ───╮🌸
+│ 🥀 *SIN RESULTADOS*
 │
-│ ⚡ *No encontré la letra de:* ${text}
-╰─────────────────❒`)
+│ 🌷 *No encontré la letra de:* ${text}
+╰───────────────────────╯`)
 
-        let txt = `╭─❒ *『 𝗖𝗬𝗕𝗘𝗥 𝗕𝗢𝗧 』* ❒
+        let txt = `🌸╭─── SAKURITA BOT ───╮🌸
 │ 🎵 *LETRA ENCONTRADA*
 │
-│ ⚡ *Título:* ${res.title}
+│ 🌷 *Título:* ${res.title}
 │ 👤 *Artista:* ${res.artists}
 │ ⏳ *Duración:* ${res.duration || 'N/A'}
-╰─────────────────❒\n\n`
-        txt += `╭─── 💻 𝗟𝗘𝗧𝗥𝗔 𝗦𝗜𝗦𝗧𝗘𝗠𝗔 ───╮\n`
+╰───────────────────────╯\n\n`
+        txt += `╭─── 🌸 𝗟𝗘𝗧𝗥𝗔 𝗗𝗘𝗟 𝗝𝗔𝗥𝗗𝗜́𝗡 ───╮\n`
         txt += `${res.lyrics}\n`
         txt += `╰─────────────────────────╯\n\n`
-        txt += `> *“La música procesada por Cyber Bot AI”* ⚡\n> *© Cyber Bot System*`
+        txt += `> *“La melodía floreció con Sakurita Bot AI”* 🌷\n> *© Sakurita Bot System*`
 
         m.reply(txt)
         await m.react('✅')
     } catch { 
         await m.react('❌')
-        m.reply(`╭─❒ *『 𝗖𝗬𝗕𝗘𝗥 𝗕𝗢𝗧 』* ❒
-│ ❌ *ERROR DE SISTEMA*
+        m.reply(`🌸╭─── SAKURITA BOT ───╮🌸
+│ 🥀 *ERROR DEL JARDÍN*
 │
-│ ⚡ *Falló al buscar la letra*
-│ 🤖 *Intenta de nuevo*
-╰─────────────────❒`)
+│ 🌷 *Falló al buscar la letra*
+│ 🌸 *Intenta de nuevo*
+╰───────────────────────╯`)
     }
 }
 handler.help = ['letra <cancion>']
