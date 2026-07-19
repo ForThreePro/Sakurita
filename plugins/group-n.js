@@ -2,40 +2,40 @@ let mutedUsers = new Set();
 
 let handler = async (m, { conn, command, participants }) => {
     let mentionedJid = m.mentionedJid[0]? m.mentionedJid[0] : m.quoted? m.quoted.sender : false;
-    if (!mentionedJid) return m.reply(`╭─❒ *『 𝗖𝗬𝗕𝗘𝗥 𝗕𝗢𝗧 』* ❒
-│ 🔇 *SISTEMA DE MUTE*
+    if (!mentionedJid) return m.reply(`🌸╭─── SAKURITA BOT ───╮🌸
+│ 🌷 *SISTEMA DE PODA*
 │
-│ ⚡ *Etiqueta a una persona o responde a un mensaje*
-╰─────────────────❒`);
+│ 🌸 *Menciona a un pétalo o responde a un mensaje*
+╰───────────────────────╯`);
 
     let isUserAdmin = participants.find(p => p.id === mentionedJid)?.admin;
-    if (isUserAdmin) return m.reply(`╭─❒ *『 𝗖𝗬𝗕𝗘𝗥 𝗕𝗢𝗧 』* ❒
-│ ❌ *ERROR DE SISTEMA*
+    if (isUserAdmin) return m.reply(`🌸╭─── SAKURITA BOT ───╮🌸
+│ 🥀 *ERROR DEL JARDÍN*
 │
-│ ⚡ *No puedes mutear a un administrador*
-╰─────────────────❒`);
-    if (mentionedJid === conn.user.jid) return m.reply(`╭─❒ *『 𝗖𝗬𝗕𝗘𝗥 𝗕𝗢𝗧 』* ❒
-│ ❌ *ERROR DE SISTEMA*
+│ 🌷 *No puedes podar la voz de un jardinero*
+╰───────────────────────╯`);
+    if (mentionedJid === conn.user.jid) return m.reply(`🌸╭─── SAKURITA BOT ───╮🌸
+│ 🥀 *ERROR DEL JARDÍN*
 │
-│ ⚡ *No puedo mutearme a mi mismo*
-╰─────────────────❒`);
+│ 🌷 *No puedo podarme a mi misma*
+╰───────────────────────╯`);
 
     if (command === "mute") {
         mutedUsers.add(mentionedJid);
-        conn.reply(m.chat, `╭─❒ *『 𝗖𝗬𝗕𝗘𝗥 𝗕𝗢𝗧 』* ❒
-│ 🔇 *USUARIO SILENCIADO*
+        conn.reply(m.chat, `🌸╭─── SAKURITA BOT ───╮🌸
+│ 🔇 *PÉTALO SILENCIADO*
 │
-│ ⚡ *@${mentionedJid.split('@')[0]}*
-│ 💻 *Sus mensajes serán eliminados*
-╰─────────────────❒`, m, { mentions: [mentionedJid] });
+│ 🌷 *@${mentionedJid.split('@')[0]}*
+│ 🌸 *Sus pétalos serán podados*
+╰───────────────────────╯`, m, { mentions: [mentionedJid] });
     } else if (command === "unmute") {
         mutedUsers.delete(mentionedJid);
-        conn.reply(m.chat, `╭─❒ *『 𝗖𝗬𝗕𝗘𝗥 𝗕𝗢𝗧 』* ❒
-│ 🔊 *USUARIO DESMUTEADO*
+        conn.reply(m.chat, `🌸╭─── SAKURITA BOT ───╮🌸
+│ 🔊 *PÉTALO DESBLOQUEADO*
 │
-│ ⚡ *@${mentionedJid.split('@')[0]}*
-│ 💻 *Ya puede hablar de nuevo*
-╰─────────────────❒`, m, { mentions: [mentionedJid] });
+│ 🌷 *@${mentionedJid.split('@')[0]}*
+│ 🌸 *Ya puede florecer de nuevo*
+╰───────────────────────╯`, m, { mentions: [mentionedJid] });
     }
 };
 
