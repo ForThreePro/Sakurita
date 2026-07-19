@@ -1,34 +1,36 @@
 import fetch from 'node-fetch'
 
-const MARCA = 'CYBER BOT 💱'
+const MARCA = 'SAKURITA BOT 🌸'
 const TZ = 'America/Lima'
 
 let handler = async (m, { conn, text }) => {
-  await conn.sendMessage(m.chat, { react: { text: '💱', key: m.key } }).catch(_=>{})
+  await conn.sendMessage(m.chat, { react: { text: '🌷', key: m.key } }).catch(_=>{})
 
   if (!text ||!text.includes('/')) {
-    return m.reply(`╭━〔 💱 *CYBER BOT - CAMBIOS* 〕━╮
-┃
-┃ *USO:*
-┃.cambio [monto] / [CODIGO] / [CODIGO]
-┃
-┃ *EJEMPLOS:*
-┃.cambio 100 / PEN / USD → Oficial
-┃.cambio 100 / USD / ARS → BLUE 🇦🇷
-┃.cambio 100 / ARS / PEN → BLUE Inverso 🇦🇷
-┃
-┃ *MONEDAS:* PEN, USD, EUR, ARS, COP, MXN, BRL...
-┃
-╰━━━━━━━━━━━━━━━━━━━━━━╯`)
+    return m.reply(`🌸╭─── SAKURITA BOT ───╮🌸
+│
+│ 🌷 *JARDÍN DE CAMBIOS*
+│
+│ *USO:*
+│.cambio [monto] / [CODIGO] / [CODIGO]
+│
+│ *EJEMPLOS:*
+│.cambio 100 / PEN / USD → Oficial
+│.cambio 100 / USD / ARS → BLUE 🇦🇷
+│.cambio 100 / ARS / PEN → BLUE Inverso 🇦🇷
+│
+│ *MONEDAS:* PEN, USD, EUR, ARS, COP, MXN, BRL...
+│
+╰──────────────────────────╯`)
   }
 
   let [montoStr, de, a] = text.split('/').map(v => v.trim().toUpperCase())
   let monto = parseFloat(montoStr.replace(/,/g, ''))
 
-  if (isNaN(monto) || monto <= 0) return m.reply(`⚠️ *Monto inválido*`)
-  if (de.length!== 3 || a.length!== 3) return m.reply(`⚠️ *Usa códigos de 3 letras:* PEN, USD, ARS`)
+  if (isNaN(monto) || monto <= 0) return m.reply(`🥀 *Pétalo inválido*\nIngresa un monto mayor a 0`)
+  if (de.length!== 3 || a.length!== 3) return m.reply(`🥀 *Código inválido*\nUsa códigos de 3 letras: PEN, USD, ARS`)
 
-  if (de === a) return m.reply(`✅ *${monto} ${de}* = *${monto} ${a}*`)
+  if (de === a) return m.reply(`🌸 *${monto} ${de}* = *${monto} ${a}*`)
 
   try {
     let tasaUSD_ARS = null
@@ -39,7 +41,7 @@ let handler = async (m, { conn, text }) => {
       let jsonBlue = await resBlue.json()
       if(!jsonBlue.venta) throw new Error('API Blue down')
       tasaUSD_ARS = jsonBlue.venta
-      tipoTasa = 'BLUE 🔵'
+      tipoTasa = 'BLUE 💙'
     }
 
     let total
@@ -64,25 +66,25 @@ let handler = async (m, { conn, text }) => {
 
     let fecha = new Date().toLocaleDateString('es-PE', { timeZone: TZ })
 
-    let txt = `╭━〔 💱 *RESULTADO CYBER BOT* 〕━╮
-┃
-┃ *💰 CONVERSIÓN*
-┃ ${monto} *${de}*
-┃ ⬇️
-┃ *${total}* *${a}*
-┃
-┃ *📊 TASA:* ${tipoTasa}
-${tasaUSD_ARS? `┃ *1 USD* = *${tasaUSD_ARS}* ARS` : ''}
-┃ *📅 FECHA:* ${fecha}
-┃
-╰━━━━━━━━╯
-> *${MARCA}* | Datos en tiempo real`
+    let txt = `🌸╭─── RESULTADO SAKURITA ───╮🌸
+│
+│ 🌷 *CONVERSIÓN DE PÉTALOS*
+│ ${monto} *${de}*
+│ ⬇️
+│ *${total}* *${a}*
+│
+│ *📊 TASA:* ${tipoTasa}
+${tasaUSD_ARS? `│ *1 USD* = *${tasaUSD_ARS}* ARS` : ''}
+│ *📅 FECHA:* ${fecha}
+│
+╰────────────────────────╯
+> *${MARCA}* | Datos en tiempo real 🌷`
 
     m.reply(txt)
 
   } catch(e) {
     console.log(e)
-    m.reply(`⚠️ *ERROR:* ${e.message}\n\nRevisa los códigos: PEN, USD, ARS, COP...`)
+    m.reply(`🥀 *ERROR:* ${e.message}\n\nRevisa los códigos: PEN, USD, ARS, COP...`)
   }
 }
 
