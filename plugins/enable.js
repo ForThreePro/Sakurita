@@ -61,7 +61,7 @@ let handler = async (m, { conn, usedPrefix, command, args, isOwner, isAdmin, isR
   if (fail) return
 
   // SOLO IMAGEN LOCAL sakura.jpg
-  const pathImg = join(process.cwd(), 'storage', 'img', 'sakura.jpg')
+  const pathImg = join(process.cwd(), 'storage', 'img', 'rayo.jpg')
   let sakuraImg = existsSync(pathImg)? readFileSync(pathImg) : null
 
   let estadoTexto = isEnable? 'Activado 🌸' : 'Desactivado 🥀'
