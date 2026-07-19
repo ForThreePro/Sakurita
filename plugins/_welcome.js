@@ -26,11 +26,11 @@ export async function before(m, { conn }) {
     const user = `@${userName}`;
 
     // [DATOS DEL GRUPO]
-    const groupName = groupMetadata.subject || 'Mi Sistema';
-    const groupDesc = groupMetadata.desc?.toString() || '📜 Sin descripción';
+    const groupName = groupMetadata.subject || 'Mi Jardín';
+    const groupDesc = groupMetadata.desc?.toString() || '🌷 Sin descripción';
     const groupMembers = groupMetadata.participants.length;
 
-    const fixedImageUrl = 'https://files.evogb.win/FXbFDD.jpg'; // [TU LOGO SOLO SI NO TIENE FOTO]
+    const fixedImageUrl = 'https://files.evogb.win/FXbFDD.jpg'; // [TU LOGO FLOR SOLO SI NO TIENE FOTO]
 
     // [FIX] 1. FOTO DEL USER PRIMERO
     let imgBuffer = null;
@@ -41,64 +41,64 @@ export async function before(m, { conn }) {
       }
     } catch(e){}
 
-    // [FIX] 2. SI NO TIENE FOTO = LOGO
+    // [FIX] 2. SI NO TIENE FOTO = LOGO FLOR
     if (!imgBuffer) {
       imgBuffer = await fetch(fixedImageUrl).then(res => res.buffer()).catch(_ => null);
     }
 
     let text = '', audioFile = '';
 
-    // [SWITCH DISEÑO CYBER BOT]
+    // [SWITCH DISEÑO SAKURITA BOT]
     if (m.messageStubType === WAMessageStubType.GROUP_PARTICIPANT_ADD) {
       audioFile = './bienvenida.mp3';
       text = chat.customWelcome
- ? chat.customWelcome.replace(/@user/gi, user).replace(/@group/gi, groupName).replace(/@count/gi, groupMembers).replace(/@desc/gi, groupDesc)
-        : `╭─❒ *『 𝗖𝗬𝗕𝗘𝗥 𝗕𝗢𝗧 』* ❒
-│ ⚡ *NUEVO USUARIO CONECTADO*
+? chat.customWelcome.replace(/@user/gi, user).replace(/@group/gi, groupName).replace(/@count/gi, groupMembers).replace(/@desc/gi, groupDesc)
+        : `🌸╭─── SAKURITA BOT ───╮🌸
+│ 🌷 *NUEVA FLOR EN EL JARDÍN*
 │
-│ 🤖 *Bienvenido:* ${user}
-│ ⚡ *Se ha conectado al sistema*
+│ 🌸 *Bienvenido:* ${user}
+│ 🌷 *Se ha sembrado un nuevo pétalo*
 │
-│ 💻 *Sistema:* ${groupName}
-│ 👥 *Usuarios:* ${groupMembers}
+│ 💮 *Jardín:* ${groupName}
+│ 👥 *Flores:* ${groupMembers}
 │ 📜 *Descripción:* ${groupDesc}
 │
-│ > *“Nuevo nodo agregado al sistema”*
-╰─────────────────❒`.trim();
+│ > *“Un nuevo pétalo florece aquí”*
+╰───────────────────────╯`.trim();
 
     } else if (m.messageStubType === WAMessageStubType.GROUP_PARTICIPANT_LEAVE) {
       audioFile = './despedida.mp3';
       text = chat.customBye
- ? chat.customBye.replace(/@user/gi, user).replace(/@group/gi, groupName).replace(/@count/gi, groupMembers).replace(/@desc/gi, groupDesc)
-        : `╭─❒ *『 𝗖𝗬𝗕𝗘𝗥 𝗕𝗢𝗧 』* ❒
-│ 💨 *DESCONEXIÓN REGISTRADA*
+? chat.customBye.replace(/@user/gi, user).replace(/@group/gi, groupName).replace(/@count/gi, groupMembers).replace(/@desc/gi, groupDesc)
+        : `🌸╭─── SAKURITA BOT ───╮🌸
+│ 🥀 *PÉTALO MARCHITO*
 │
-│ 🌫️ *Se desconectó:* ${user}
-│ ⚡ *Nodo fuera de línea*
+│ 🌫️ *Se fue:* ${user}
+│ 🌸 *Pétalo desprendido*
 │
-│ 💻 *Sistema:* ${groupName}
+│ 💮 *Jardín:* ${groupName}
 │ 👥 *Quedan:* ${groupMembers}
-│ 📜 *Motivo:* Desconexión voluntaria
+│ 📜 *Motivo:* Voló con el viento
 │
-│ > *“Nodo desconectado del sistema”*
-╰─────────────────❒`.trim();
+│ > *“Un pétalo se desprendió”*
+╰───────────────────────╯`.trim();
 
     } else if (m.messageStubType === WAMessageStubType.GROUP_PARTICIPANT_REMOVE) {
       audioFile = './kick.mp3';
       text = chat.customKick
- ? chat.customKick.replace(/@user/gi, user).replace(/@group/gi, groupName).replace(/@count/gi, groupMembers).replace(/@desc/gi, groupDesc)
-        : `╭─❒ *『 𝗖𝗬𝗕𝗘𝗥 𝗕𝗢𝗧 』* ❒
-│ 🚮 *EXPULSIÓN EJECUTADA*
+? chat.customKick.replace(/@user/gi, user).replace(/@group/gi, groupName).replace(/@count/gi, groupMembers).replace(/@desc/gi, groupDesc)
+        : `🌸╭─── SAKURITA BOT ───╮🌸
+│ 🚮 *PÉTALO PODADO*
 │
-│ 💣 *Eliminado:* ${user}
-│ ⚡ *Protocolo de seguridad aplicado*
+│ 💥 *Eliminado:* ${user}
+│ 🌷 *Protocolo de poda aplicado*
 │
-│ 💻 *Sistema:* ${groupName}
+│ 💮 *Jardín:* ${groupName}
 │ 👥 *Quedan:* ${groupMembers}
-│ 📜 *Motivo:* Violó protocolos del sistema
+│ 📜 *Motivo:* No cuidó el jardín
 │
-│ > *“Acceso denegado por violación”*
-╰─────────────────❒`.trim();
+│ > *“Acceso denegado por no cuidar”*
+╰───────────────────────╯`.trim();
     } else return true;
 
     // 1. MENSAJE 1: IMAGEN + TEXTO PRO
