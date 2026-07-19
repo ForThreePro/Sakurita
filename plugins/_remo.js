@@ -6,20 +6,20 @@ let handler = async (m, { conn, usedPrefix, command }) => {
     let q = m.quoted? m.quoted : m;
     let mime = (q.msg || q).mimetype || '';
 
-    if (!mime) throw `⚡ *CYBER BOT* 🤖\n\nResponde a una imagen con *${usedPrefix + command}*`;
+    if (!mime) throw `🌸 *SAKURITA BOT* 🌷\n\nResponde a una imagen con *${usedPrefix + command}*`;
     if (!/image\/(jpe?g|png)/.test(mime)) {
-        throw `⚠️ *ERROR DE SISTEMA*\n\nFormato no soportado. Solo JPG/PNG. Envía la imagen normal`;
+        throw `🥀 *ERROR DEL JARDÍN*\n\nFormato no soportado. Solo JPG/PNG. Envía la imagen normal`;
     }
 
     const API_KEY = "FEx4CYmYN1QRQWD1mbZp87jV";
 
     await m.react('⏳');
-    await m.reply('⚡ *Procesando imagen... Eliminando fondo*');
+    await m.reply('🌷 *Procesando pétalo... Eliminando fondo*');
 
     try {
         let img = await q.download();
-        if (!img) throw '❌ No se pudo descargar la imagen';
-        if (img.length > 12 * 1024 * 1024) throw '❌ *ARCHIVO DEMASIADO PESADO*\n\nMáximo 12MB permitido';
+        if (!img) throw '🥀 No se pudo descargar la imagen';
+        if (img.length > 12 * 1024 * 1024) throw '🥀 *ARCHIVO DEMASIADO PESADO*\n\nMáximo 12MB permitido';
 
         let base64Img = img.toString('base64');
 
@@ -38,7 +38,7 @@ let handler = async (m, { conn, usedPrefix, command }) => {
 
         if (!res.ok) {
             let errorText = await res.text();
-            throw `❌ *ERROR ${res.status}*\n\n${errorText}`;
+            throw `🥀 *ERROR ${res.status}*\n\n${errorText}`;
         }
 
         let processedImg = await res.buffer();
@@ -46,8 +46,8 @@ let handler = async (m, { conn, usedPrefix, command }) => {
         await conn.sendFile(
             m.chat,
             processedImg,
-            'cyber_bot.png',
-            '✨ *FONDO ELIMINADO CON ÉXITO* ✨\n\n⚡ *Procesado por Cyber Bot AI*',
+            'sakurita_bot.png',
+            '✨ *FONDO ELIMINADO CON ÉXITO* ✨\n\n🌸 *Procesado por Sakurita Bot AI*',
             m
         );
 
