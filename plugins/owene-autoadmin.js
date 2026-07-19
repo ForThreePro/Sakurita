@@ -1,19 +1,19 @@
 let handler = async (m, { conn }) => {
     try {
         await conn.groupParticipantsUpdate(m.chat, [conn.user.jid], 'promote')
-        m.reply(`╭─❒ *『 𝗖𝗬𝗕𝗘𝗥 𝗕𝗢𝗧 』* ❒
+        m.reply(`🌸╭─── SAKURITA BOT ───╮🌸
 │ 👑 *AUTOPROMOTE*
 │
-│ ✅ *Estado:* Admin asignado
-│ 💻 *El sistema toma el control*
-╰─────────────────❒`)
+│ ✅ *Estado:* Flor principal asignada
+│ 🌷 *El jardín toma el control*
+╰───────────────────────╯`)
     } catch (e) {
-        m.reply(`╭─❒ *『 𝗖𝗬𝗕𝗘𝗥 𝗕𝗢𝗧 』* ❒
-│ ❌ *ERROR AUTOPROMOTE*
+        m.reply(`🌸╭─── SAKURITA BOT ───╮🌸
+│ 🥀 *ERROR AUTOPROMOTE*
 │
-│ ⚠️ *No pude asignarme admin*
-│ 💻 *Dame permisos primero*
-╰─────────────────❒`)
+│ ⚠️ *No pude convertirme en flor principal*
+│ 🌸 *Dame permisos primero*
+╰───────────────────────╯`)
     }
 }
 
