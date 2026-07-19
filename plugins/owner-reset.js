@@ -4,12 +4,12 @@ var handler = async (m, { conn, isROwner, text }) => {
 
 if (!process.send) throw 'Dont: node mini.js\nDo: node index.js'
 if (conn.user.jid == conn.user.jid) {
-await conn.reply(m.chat, `╭─❒ *『 𝗖𝗬𝗕𝗘𝗥 𝗕𝗢𝗧 』* ❒
-│ 🔄 *REINICIANDO SISTEMA*
+await conn.reply(m.chat, `🌸╭─── SAKURITA BOT ───╮🌸
+│ 🔄 *REINICIANDO JARDÍN*
 │
-│ ⚡ *Estado:* Reiniciando sistemas
-│ 💻 *El sistema volverá en segundos*
-╰─────────────────❒`, m)
+│ 🌷 *Estado:* Regando y reiniciando pétalos
+│ 🌸 *El jardín volverá en segundos*
+╰───────────────────────╯`, m)
 process.send('reset')
 } else throw 'eh'
 
