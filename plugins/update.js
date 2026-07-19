@@ -1,25 +1,25 @@
 import { exec } from "child_process"
 
 const handler = async (m, { conn }) => {
-    const owner = "👑 *Creador: Whois Yallico*"
+    const owner = "👑 *Cultivadora: Whois Yallico*"
 
-    if (m.react) await m.react('💻')
+    if (m.react) await m.react('🌸')
 
-    await conn.reply(m.chat, '💻 *CYBER BOT* ➔ Sincronizando con el sistema... Actualizando módulos.', m)
+    await conn.reply(m.chat, '🌷 *SAKURITA BOT* ➔ Regando el jardín... Actualizando pétalos.', m)
 
     exec('git pull', async (err, stdout, stderr) => {
         if (err) {
-            if (m.react) await m.react('❌')
-            return conn.reply(m.chat, `💻 *CYBER BOT ERROR* ➔ Falló la actualización.\n\n\`\`${err.message}\`\n\n${owner}`, m)
+            if (m.react) await m.react('✖️')
+            return conn.reply(m.chat, `🥀 *SAKURITA BOT ERROR* ➔ Falló la actualización.\n\n\`\`${err.message}\`\n\n${owner}`, m)
         }
 
         if (stdout.includes('Already up to date.')) {
-            if (m.react) await m.react('✅')
-            return conn.reply(m.chat, `💻 *CYBER BOT* ➔ El sistema ya está en su versión más reciente.\n\n${owner}\n> "El sistema nunca duerme"`, m)
+            if (m.react) await m.react('✔️')
+            return conn.reply(m.chat, `🌸 *SAKURITA BOT* ➔ El jardín ya está florecido con la última versión.\n\n${owner}\n> "El jardín nunca se marchita"`, m)
         }
 
-        if (m.react) await m.react('💻')
-        return conn.reply(m.chat, `💻 *CYBER BOT* ➔ Actualización aplicada con éxito.\n\n*📜 Cambios:*\n\`\`\`${stdout}\`\`\`\n\n${owner}`, m)
+        if (m.react) await m.react('🌸')
+        return conn.reply(m.chat, `🌸 *SAKURITA BOT* ➔ Nuevos pétalos añadidos al jardín.\n\n*📜 Cambios:*\n\`\`${stdout}\`\n\n${owner}`, m)
     })
 }
 
