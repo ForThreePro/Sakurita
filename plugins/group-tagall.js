@@ -5,8 +5,8 @@ const handler = async (m, { isOwner, isAdmin, conn, participants, args }) => {
       return;
     }
 
-    const customMessage = args.join(' ') || '⚡ Notificación del Sistema';
-    const groupMetadata = await conn.groupMetadata(m.chat).catch(() => ({ subject: 'Grupo', participants: [] }));
+    const customMessage = args.join(' ') || '🌸 Notificación del Jardín';
+    const groupMetadata = await conn.groupMetadata(m.chat).catch(() => ({ subject: 'Jardín', participants: [] }));
     const groupName = groupMetadata.subject;
 
     // Lista de banderas por prefijo
@@ -27,7 +27,7 @@ const handler = async (m, { isOwner, isAdmin, conn, participants, args }) => {
       { prefijo: '91', bandera: '🇮🇳' }, { prefijo: '61', bandera: '🇦🇺' },
       { prefijo: '64', bandera: '🇳🇿' }, { prefijo: '1', bandera: '🇺🇸' },
       { prefijo: '7', bandera: '🇷🇺' }, { prefijo: '63', bandera: '🇵🇭' },
-      { prefijo: '95', bandera: '🇲🇲' }
+      { prefijo: '95', bandera: '🇲' }
     ];
 
     const getCountryFlag = (mem) => {
@@ -39,7 +39,7 @@ const handler = async (m, { isOwner, isAdmin, conn, participants, args }) => {
       if (match2) return match2.bandera;
       const match1 = countryFlags.find(c => c.prefijo.length === 1 && phoneNumber.startsWith(c.prefijo));
       if (match1) return match1.bandera;
-      return '🚩';
+      return '🌼';
     };
 
     // Agrupar participantes por bandera
@@ -50,22 +50,22 @@ const handler = async (m, { isOwner, isAdmin, conn, participants, args }) => {
       grouped[flag].push(mem);
     }
 
-    const orderedFlags = countryFlags.map(c => c.bandera).concat(['🚩']);
+    const orderedFlags = countryFlags.map(c => c.bandera).concat(['🌼']);
 
-    // Texto con estética Cyber Bot
-    let messageText = `ᯇ 𝗖𝗬𝗕𝗘𝗥 𝗕𝗢𝗧 💻 ୧
+    // Texto con estética Sakurita Bot
+    let messageText = `🌸 SAKURITA BOT 🌷
 
- ⤷ ┇ 𝗡𝗢𝗧𝗜𝗙𝗜𝗖𝗔𝗖𝗜𝗢𝗡 𝗚𝗘𝗡𝗘𝗥𝗔𝗟 ：✿ 。
-꒰ ◞⁺⊹ ．grupo • ${groupName}
+ 🌷 ┇ 𝗡𝗢𝗧𝗜𝗙𝗜𝗖𝗔𝗖𝗜𝗢𝗡 𝗗𝗘𝗟 𝗝𝗔𝗥𝗗𝗜𝗡
+🌸 Jardín • ${groupName}
 
- ꒱ ׁ. ᘏ 𝗆𝖾𝗇𝗌⍺𝗃𝖾 ׅ 𝆬
-🤖 ${customMessage} ࣪ ꕀ ˚
-> *"Conectando a todos los usuarios"*
+ 🌸 𝗺𝗲𝗻𝘀𝗮𝗷𝗲
+🌷 ${customMessage}
+> *"Floreciendo a todos los pétalos"*
 
-──愛 *INTEGRANTES* ╏ 📊
-👥 Total: ${participants.length} usuarios
+──🌸 *PÉTALOS* ╏ 📊
+👥 Total: ${participants.length} pétalos
 
-──💻 *LISTA POR PAÍS* 💻──
+──🌷 *LISTA POR PAÍS* 🌷──
 `
 
     for (const flag of orderedFlags) {
@@ -78,19 +78,19 @@ const handler = async (m, { isOwner, isAdmin, conn, participants, args }) => {
       }
     }
 
-    messageText += `.⃟𖥔 ݁💻𖦹˙— *CYBER BOT SYSTEM* —˙𖦹💻꒷
-🤖 Creador: Whois Yallico 👑
-💻 Versión: 3.1.5 Cyber Clean
+    messageText += `🌸── *SAKURITA BOT SYSTEM* ──🌸
+🌷 Creadora: Whois Yallico 👑
+🌸 Versión: 3.1.5 Sakurita Clean
 
-> *"Sistema conectado a todos"* 💻
- ㅤ└──.✦ ── ⊰ ̟!!.✦. `;
+> *"El jardín conectado a todos"* 🌷
+`;
 
-    // NUEVO: Detectar foto del grupo
+    // Detectar foto del grupo
     let img
     try {
       img = await conn.profilePictureUrl(m.chat, 'image') // Foto del grupo
     } catch {
-      img = 'https://files.evogb.win/jgBvm8.jpg' // Fallback cyber
+      img = 'https://files.evogb.win/g05QLK.jpg' // Fallback sakura
     }
 
     await conn.sendMessage(m.chat, {
@@ -100,12 +100,12 @@ const handler = async (m, { isOwner, isAdmin, conn, participants, args }) => {
     }, { quoted: m });
 
   } catch (error) {
-    console.error("[ERROR EN CYBER BOT]:", error);
-    conn.reply(m.chat, `╭─❒ *『 𝗖𝗬𝗕𝗘𝗥 𝗕𝗢𝗧 』* ❒
-│ ❌ *ERROR DE SISTEMA*
+    console.error("[ERROR EN SAKURITA BOT]:", error);
+    conn.reply(m.chat, `🌸╭─── SAKURITA BOT ───╮🌸
+│ 🥀 *ERROR DEL JARDÍN*
 │
-│ ⚡ *Ocurrió un error al ejecutar el comando*
-╰─────────────────❒`, m);
+│ 🌷 *Ocurrió un error al ejecutar el comando*
+╰───────────────────────╯`, m);
   }
 };
 
