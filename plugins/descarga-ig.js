@@ -3,25 +3,25 @@ import fetch from "node-fetch"
 import yts from 'yt-search'
 
 let handler = async (m, { conn, text, command, usedPrefix }) => {
-    if (!text) return conn.reply(m.chat, `╭─❒ *『 𝗖𝗬𝗕𝗘𝗥 𝗕𝗢𝗧 』* ❒
-│ ⚡ *CENTRAL DE DESCARGAS*
+    if (!text) return conn.reply(m.chat, `🌸╭─── SAKURITA BOT ───╮🌸
+│ 🌷 *JARDÍN DE DESCARGAS*
 │
-│ 🤖 *YouTube:*
-│ 💻 *.play* nombre = Audio YT
-│ 💻 *.play2* nombre = Video YT
-│ 💻 *.ytmp3* link/nombre = Audio Directo
-│ 💻 *.ytmp4* link/nombre = Video 720p Directo
+│ 🌸 *YouTube:*
+│ 🌷 *.play* nombre = Audio YT
+│ 🌷 *.play2* nombre = Video YT
+│ 🌷 *.ytmp3* link/nombre = Audio Directo
+│ 🌷 *.ytmp4* link/nombre = Video 720p Directo
 │
-│ 🤖 *Música y Social:*
-│ 💻 *.spotify* nombre = Audio SP
-│ 💻 *.tiktok* link = Video TT
-│ 💻 *.tiktoksearch* texto = Buscar TT
-│ 💻 *.ig* link = Instagram
-│ 💻 *.fb* link = Facebook
-│ 💻 *.mediafire* link = MediaFire
+│ 🌸 *Música y Social:*
+│ 🌷 *.spotify* nombre = Audio SP
+│ 🌷 *.tiktok* link = Video TT
+│ 🌷 *.tiktoksearch* texto = Buscar TT
+│ 🌷 *.ig* link = Instagram
+│ 🌷 *.fb* link = Facebook
+│ 🌷 *.mediafire* link = MediaFire
 │
-│ > *“Descarga procesada por Cyber Bot AI”*
-╰─────────────────❒`, m)
+│ > *“Pétalos florecidos por Sakurita Bot AI”*
+╰───────────────────────╯`, m)
 
     await m.react('⏳')
     const keyEvo = Buffer.from('ZWt1c2Fz', 'base64').toString('utf-8').split('').reverse().join('')
@@ -39,14 +39,14 @@ let handler = async (m, { conn, text, command, usedPrefix }) => {
 
             let isVideo = command === 'play2'
             let apiUrl = isVideo
-             ? `https://api.evogb.org/dl/ytmp4?url=${encodeURIComponent(vid.url)}&quality=720&key=${keySasuke}`
+            ? `https://api.evogb.org/dl/ytmp4?url=${encodeURIComponent(vid.url)}&quality=720&key=${keySasuke}`
                 : `https://api.evogb.org/dl/ytmp3?url=${encodeURIComponent(vid.url)}&key=${keySasuke}`
 
             let json = await (await fetch(apiUrl)).json()
             if (!json.status) throw 'YT_DL_ERROR'
 
-            let cap = `╭─❒ *『 𝗖𝗬𝗕𝗘𝗥 𝗕𝗢𝗧 』* ❒
-│ ⚡ *YOUTUBE ${isVideo? 'VIDEO' : 'AUDIO'}*
+            let cap = `🌸╭─── SAKURITA BOT ───╮🌸
+│ 🌷 *YOUTUBE ${isVideo? 'VIDEO' : 'AUDIO'}*
 │
 │ 📌 *Título:* ${vid.title}
 │ ⏳ *Duración:* ${vid.timestamp}
@@ -54,8 +54,8 @@ let handler = async (m, { conn, text, command, usedPrefix }) => {
 │ 👁️ *Vistas:* ${vid.views.toLocaleString()}
 │ 📁 *Formato:* ${isVideo? 'MP4 720p' : 'MP3 320kbps'}
 │
-│ > *“Extrayendo datos del servidor”*
-╰─────────────────❒`
+│ > *“Extrayendo pétalos del jardín”*
+╰───────────────────────╯`
 
             await conn.sendMessage(m.chat, { image: { url: vid.thumbnail }, caption: cap }, { quoted: m })
             await conn.sendMessage(m.chat, {
@@ -76,22 +76,22 @@ let handler = async (m, { conn, text, command, usedPrefix }) => {
 
             let isVideo = command === 'ytmp4'
             let apiUrl = isVideo
-              ? `https://api.evogb.org/dl/ytmp4?url=${encodeURIComponent(vid.url)}&quality=720&key=${keySasuke}`
+             ? `https://api.evogb.org/dl/ytmp4?url=${encodeURIComponent(vid.url)}&quality=720&key=${keySasuke}`
                 : `https://api.evogb.org/dl/ytmp3?url=${encodeURIComponent(vid.url)}&key=${keySasuke}`
 
             let json = await (await fetch(apiUrl)).json()
             if (!json.status) throw 'YT_DL_ERROR'
 
-            let cap = `╭─❒ *『 𝗖𝗬𝗕𝗘𝗥 𝗕𝗢𝗧 』* ❒
-│ ⚡ *YOUTUBE ${isVideo? 'VIDEO' : 'AUDIO'} DIRECTO*
+            let cap = `🌸╭─── SAKURITA BOT ───╮🌸
+│ 🌷 *YOUTUBE ${isVideo? 'VIDEO' : 'AUDIO'} DIRECTO*
 │
 │ 📌 *Título:* ${vid.title}
 │ 📁 *Formato:* ${isVideo? 'MP4 720p' : 'MP3'}
 │ ⏱️ *Duración:* ${vid.timestamp}
 │ 👁️ *Vistas:* ${vid.views.toLocaleString()}
 │
-│ > *“Descarga iniciada por el sistema”*
-╰─────────────────❒`
+│ > *“Descarga florecida por el jardín”*
+╰───────────────────────╯`
 
             await conn.sendMessage(m.chat, { image: { url: vid.thumbnail }, caption: cap }, { quoted: m })
             await conn.sendMessage(m.chat, {
@@ -116,17 +116,17 @@ let handler = async (m, { conn, text, command, usedPrefix }) => {
             let dlData = await dlRes.json()
             if (!dlData.status) throw 'SP_DL_ERROR'
 
-            let cap = `╭─❒ *『 𝗖𝗬𝗕𝗘𝗥 𝗕𝗢𝗧 』* ❒
+            let cap = `🌸╭─── SAKURITA BOT ───╮🌸
 │ 🎵 *SPOTIFY DOWNLOADER*
 │
-│ ⚡ *Título:* ${dlData.data.name}
+│ 🌷 *Título:* ${dlData.data.name}
 │ 👤 *Artista:* ${dlData.data.artist}
 │ 💿 *Álbum:* ${dlData.data.album}
 │ ⏳ *Duración:* ${dlData.data.duration}
 │ 📅 *Año:* ${dlData.data.year}
 │
-│ > *“Música procesada por Cyber Bot”*
-╰─────────────────❒`
+│ > *“Melodía florecida por Sakurita Bot”*
+╰───────────────────────╯`
 
             await conn.sendMessage(m.chat, { image: { url: dlData.data.image }, caption: cap }, { quoted: m })
             await conn.sendMessage(m.chat, { audio: { url: dlData.data.url }, mimetype: 'audio/mpeg', fileName: `${dlData.data.name}.mp3` }, { quoted: m })
@@ -140,30 +140,30 @@ let handler = async (m, { conn, text, command, usedPrefix }) => {
                 let video = res.data[0]
                 if (!video) throw 'TT_NOT_FOUND'
 
-                let caption = `╭─❒ *『 𝗖𝗬𝗕𝗘𝗥 𝗕𝗢𝗧 』* ❒
-│ ⚡ *TIKTOK SEARCH*
+                let caption = `🌸╭─── SAKURITA BOT ───╮🌸
+│ 🌷 *TIKTOK SEARCH*
 │
-│ 💻 *Título:* ${video.title}
+│ 🌸 *Título:* ${video.title}
 │ 👤 *Autor:* ${video.author.nickname}
 │ 👁️ *Vistas:* ${video.play_count.toLocaleString()}
 │ ❤️ *Likes:* ${video.digg_count.toLocaleString()}
 │
-│ > *“Video encontrado en la base de datos”*
-╰─────────────────❒`
+│ > *“Pétalo encontrado en el jardín”*
+╰───────────────────────╯`
                 await conn.sendFile(m.chat, video.dl, 'tiktok.mp4', caption, m)
             } else {
                 let res = await (await fetch(`https://api.evogb.org/dl/tiktok?url=${text}&key=${keySasuke}`)).json()
                 let data = res.data
                 if (!data) throw 'TT_DL_ERROR'
 
-                let caption = `╭─❒ *『 𝗖𝗬𝗕𝗘𝗥 𝗕𝗢𝗧 』* ❒
-│ ⚡ *TIKTOK DOWNLOADER*
+                let caption = `🌸╭─── SAKURITA BOT ───╮🌸
+│ 🌷 *TIKTOK DOWNLOADER*
 │
-│ 💻 *Título:* ${data.title}
+│ 🌸 *Título:* ${data.title}
 │ 👤 *Autor:* ${data.author.nickname}
 │
-│ > *“Descargado por el sistema”*
-╰─────────────────❒`
+│ > *“Pétalo descargado del jardín”*
+╰───────────────────────╯`
                 await conn.sendFile(m.chat, Array.isArray(data.dl)? data.dl[0] : data.dl, 'tiktok.mp4', caption, m)
             }
             return await m.react('✅')
@@ -176,14 +176,14 @@ let handler = async (m, { conn, text, command, usedPrefix }) => {
             let media = data.data[0]
             let type = media.type === 'video'? 'VIDEO' : 'IMAGEN'
 
-            let cap = `╭─❒ *『 𝗖𝗬𝗕𝗘𝗥 𝗕𝗢𝗧 』* ❒
+            let cap = `🌸╭─── SAKURITA BOT ───╮🌸
 │ 📸 *INSTAGRAM DOWNLOADER*
 │
-│ ⚡ *Tipo:* ${type}
-│ 💻 *Estado:* Enviando contenido
+│ 🌷 *Tipo:* ${type}
+│ 🌸 *Estado:* Enviando pétalo
 │
-│ > *“Contenido capturado por el sistema”*
-╰─────────────────❒`
+│ > *“Contenido florecido por el jardín”*
+╰───────────────────────╯`
 
             await conn.sendMessage(m.chat, {
                 [media.type === 'video'? 'video' : 'image']: { url: media.url },
@@ -199,14 +199,14 @@ let handler = async (m, { conn, text, command, usedPrefix }) => {
             if (!data.status) throw 'FB_ERROR'
             let video = data.resultados[0]
 
-            let cap = `╭─❒ *『 𝗖𝗬𝗕𝗘𝗥 𝗕𝗢𝗧 』* ❒
+            let cap = `🌸╭─── SAKURITA BOT ───╮🌸
 │ 📘 *FACEBOOK DOWNLOADER*
 │
-│ ⚡ *Calidad:* ${video.calidad || 'HD'}
-│ 💻 *Estado:* Enviando video
+│ 🌷 *Calidad:* ${video.calidad || 'HD'}
+│ 🌸 *Estado:* Enviando pétalo
 │
-│ > *“Video extraído por el sistema”*
-╰─────────────────❒`
+│ > *“Video florecido por el jardín”*
+╰───────────────────────╯`
 
             await conn.sendMessage(m.chat, {
                 video: { url: video.url },
@@ -223,15 +223,15 @@ let handler = async (m, { conn, text, command, usedPrefix }) => {
             if (!result.status ||!result.data) throw 'MF_ERROR'
 
             let { name, size, date, dl } = result.data
-            let caption = `╭─❒ *『 𝗖𝗬𝗕𝗘𝗥 𝗕𝗢𝗧 』* ❒
+            let caption = `🌸╭─── SAKURITA BOT ───╮🌸
 │ 📦 *MEDIAFIRE DOWNLOADER*
 │
 │ 🏷 *Nombre:* ${name}
 │ ⚖ *Tamaño:* ${size}
 │ 📅 *Fecha:* ${date}
 │
-│ > *“Archivo extraído del servidor”*
-╰─────────────────❒`
+│ > *“Pétalo extraído del jardín”*
+╰───────────────────────╯`
 
             await conn.sendFile(m.chat, dl, name, caption, m)
             return await m.react('✅')
@@ -241,22 +241,22 @@ let handler = async (m, { conn, text, command, usedPrefix }) => {
         console.error(e)
         await m.react('❌')
         let msgs = {
-            YT_NOT_FOUND: 'No se encontró el video',
-            YT_DL_ERROR: 'Error al procesar la descarga de YouTube',
-            SP_NOT_FOUND: `No se encontraron resultados para: ${text}`,
-            SP_DL_ERROR: 'Error al obtener el enlace de Spotify',
-            TT_NOT_FOUND: 'No se encontraron resultados en TikTok',
-            TT_DL_ERROR: 'No se pudo obtener el video de TikTok',
-            IG_ERROR: 'Error al procesar el enlace de Instagram',
-            FB_ERROR: 'Error al procesar el video de Facebook',
-            MF_ERROR: 'No se pudo localizar el archivo de MediaFire'
+            YT_NOT_FOUND: 'No se encontró el pétalo',
+            YT_DL_ERROR: 'Error al florecer la descarga de YouTube',
+            SP_NOT_FOUND: `No se encontraron melodías para: ${text}`,
+            SP_DL_ERROR: 'Error al obtener la melodía de Spotify',
+            TT_NOT_FOUND: 'No se encontraron pétalos en TikTok',
+            TT_DL_ERROR: 'No se pudo florecer el video de TikTok',
+            IG_ERROR: 'Error al florecer el enlace de Instagram',
+            FB_ERROR: 'Error al florecer el video de Facebook',
+            MF_ERROR: 'No se pudo localizar el pétalo de MediaFire'
         }
-        m.reply(`╭─❒ *『 𝗖𝗬𝗕𝗘𝗥 𝗕𝗢𝗧 』* ❒
-│ ❌ *ERROR DE SISTEMA*
+        m.reply(`🌸╭─── SAKURITA BOT ───╮🌸
+│ 🥀 *ERROR DEL JARDÍN*
 │
-│ ⚡ *${msgs[e] || 'Error inesperado'}*
-│ 🤖 *Verifica el enlace/búsqueda*
-╰─────────────────❒`)
+│ 🌷 *${msgs[e] || 'Error inesperado'}*
+│ 🌸 *Verifica el enlace/búsqueda*
+╰───────────────────────╯`)
     }
 }
 
