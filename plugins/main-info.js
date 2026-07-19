@@ -6,16 +6,16 @@ let handler = async (m) => {
     const used = process.memoryUsage()
     let cpu = os.loadavg()[0].toFixed(2)
 
-    let info = `╭─❒ *『 𝗖𝗬𝗕𝗘𝗥 𝗕𝗢𝗧 』* ❒
-│ 📊 *ESTADO DEL SISTEMA*
+    let info = `🌸╭─── SAKURITA BOT ───╮🌸
+│ 🌷 *ESTADO DEL JARDÍN*
 │
 │ ⏰ *Uptime:* ${muptime}
 │ 🧠 *RAM Usada:* ${(used.heapUsed / 1024 / 1024).toFixed(2)} MB
-│ ⚡ *Carga CPU:* ${cpu}%
+│ 🌸 *Carga Jardín:* ${cpu}%
 │
-│ 👑 *Desarrollado por:* Whois Yallico
-│ > *“Sistema conectado 24/7”*
-╰─────────────────❒`
+│ 👑 *Cultivadora:* Whois Yallico
+│ > *“El jardín florece 24/7”*
+╰───────────────────────╯`
 
     m.reply(info)
 }
