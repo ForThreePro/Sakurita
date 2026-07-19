@@ -1,12 +1,12 @@
 import axios from 'axios'
 
 let handler = async (m, { conn, text }) => {
-    if (!text) return m.reply(`╭─❒ *『 𝗖𝗬𝗕𝗘𝗥 𝗕𝗢𝗧 』* ❒
-│ 🔍 *BÚSQUEDA EN LA WEB*
+    if (!text) return m.reply(`🌸╭─── SAKURITA BOT ───╮🌸
+│ 🌷 *BÚSQUEDA EN EL JARDÍN*
 │
-│ 🤖 *¿Qué deseas buscar?*
-│ ⚡ *Uso:*.google Cyber Bot
-╰─────────────────❒`)
+│ 🌸 *¿Qué pétalo buscas?*
+│ 🌷 *Uso:*.google Sakurita Bot
+╰───────────────────────╯`)
 
     await m.react('🔍')
 
@@ -14,27 +14,27 @@ let handler = async (m, { conn, text }) => {
         let { data } = await axios.get(`https://api.delirius.store/search/google?query=${encodeURIComponent(text)}`)
         let results = data.data.slice(0, 5)
 
-        if (!results.length) return m.reply(`╭─❒ *『 𝗖𝗬𝗕𝗘𝗥 𝗕𝗢𝗧 』* ❒
-│ ❌ *SIN RESULTADOS*
+        if (!results.length) return m.reply(`🌸╭─── SAKURITA BOT ───╮🌸
+│ 🥀 *SIN RESULTADOS*
 │
-│ ⚡ *No se encontró nada sobre:* ${text}
-╰─────────────────❒`)
+│ 🌷 *No se encontró nada sobre:* ${text}
+╰───────────────────────╯`)
 
-        let txt = `╭─❒ *『 𝗖𝗬𝗕𝗘𝗥 𝗕𝗢𝗧 』* ❒
-│ 🔍 *RESULTADOS DE BÚSQUEDA*
+        let txt = `🌸╭─── SAKURITA BOT ───╮🌸
+│ 🔍 *RESULTADOS DEL JARDÍN*
 │
-│ 🤖 *Consulta:* ${text}
-╰─────────────────❒\n\n`
+│ 🌸 *Consulta:* ${text}
+╰───────────────────────╯\n\n`
 
         txt += results.map((v, i) => {
-            return `╭─── ⚡ *RESULTADO ${i + 1}* ───╮
+            return `╭─── 🌷 *PÉTALO ${i + 1}* ───╮
 │ 📌 *${v.title}*
 │ 📝 ${v.description}
 │ 🔗 ${v.url}
 ╰───────────────────╯`
         }).join('\n\n')
 
-        txt += `\n\n> *“Datos procesados por Cyber Bot AI”* 💻\n> *© Cyber Bot System*`
+        txt += `\n\n> *“Datos florecidos por Sakurita Bot AI”* 🌸\n> *© Sakurita Bot System*`
 
         await conn.reply(m.chat, txt, m)
         await m.react('✅')
@@ -42,12 +42,12 @@ let handler = async (m, { conn, text }) => {
     } catch (e) {
         console.error(e)
         await m.react('❌')
-        m.reply(`╭─❒ *『 𝗖𝗬𝗕𝗘𝗥 𝗕𝗢𝗧 』* ❒
-│ ❌ *ERROR DE SISTEMA*
+        m.reply(`🌸╭─── SAKURITA BOT ───╮🌸
+│ 🥀 *ERROR DEL JARDÍN*
 │
-│ ⚡ *Falló la búsqueda*
-│ 🤖 *Intenta de nuevo*
-╰─────────────────❒`)
+│ 🌷 *Falló la búsqueda*
+│ 🌸 *Intenta de nuevo*
+╰───────────────────────╯`)
     }
 }
 
