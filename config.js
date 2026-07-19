@@ -8,23 +8,24 @@ import axios from 'axios'
 
 global.owner = [
   [ '51936994155', 'Barboza OFC 🌃', true ],
-  [ '573155227977', 'Jota 🐼', true ]
+  [ '528621029907', 'Jota 🐼', true ]
 ]
 
 global.mods = []
 global.prems = []
 
-global.packname = `[ 𝘾𝙮𝙗𝙚𝙧 𝘽ο𝙩 ⚡`
-global.author = '𝘾𝙮𝙗𝙚𝙧 𝘽ο𝙩 𝙈𝘿 ⚡]'
-global.stickpack = '© 𝘾𝙮𝙗𝙚𝙧 𝘽ο𝙩 𝙈𝘿 ⚡'
-global.stickauth = '𝘽𝙮 𝘾𝙮𝙗𝙚𝙧 𝘽ο𝙩'
-global.wm = '𝘾𝙮𝙗𝙚𝙧 ⚡'
-global.botname = '[ 𝘾𝙮𝙗𝙚𝙧 𝘽ο𝙩 𝙈𝘿 ⚡ ]'
-global.textbot = `𝙋ο𝙬𝙚𝙧𝙚𝙙 𝙗𝙮 𝘾𝙮𝙗𝙚𝙧 🌀`
-global.dev = '• 𝙋ο𝙬𝙚𝙧𝙚𝙙 𝙗𝙮 𝘾ο𝙢𝙢𝙪𝙣𝙞𝙩𝙮 𝘾𝙮𝙗𝙚𝙧 𝘽ο𝙩 𝙈𝘿 ⚡'
-global.wait = '⚡ *𝘼𝙜𝙪𝙖𝙧𝙙𝙚 𝙪𝙣 𝙢ο𝙢𝙚𝙣𝙩ο, 𝙚𝙨𝙘𝙖𝙣𝙚𝙖𝙣𝙙𝙤 𝙨𝙞𝙨𝙩𝙚𝙢𝙖... 🤖\n\n> 𝘾𝙮𝙗𝙚𝙧 𝘽ο𝙩 𝙈𝘿 ⚡*'
-global.listo = '*𝘼𝙦𝙪𝙞 𝙩𝙞𝙚𝙣𝙚 𝙟𝙚𝙛𝙚 🤖*'
-global.namechannel = '𝘾𝙮𝙗𝙚𝙧 𝘽ο𝙩 𝙈𝘿 ⚡'
+// 🌸 DISEÑO SAKURITA BOT 🌸
+global.packname = `🌸  SAKURITA BOT  🌸`
+global.author = 'By Yallico 🌷'
+global.stickpack = '© SAKURITA BOT 🌸'
+global.stickauth = 'By Yallico 🌷'
+global.wm = 'SAKURITA 🌸'
+global.botname = '[ SAKURITA BOT 🌸 ]'
+global.textbot = `🌷 Powered by Pétalos Digitales`
+global.dev = '• Powered by Sakurita Community 🌸'
+global.wait = '🌸 *Aguarda un momentito... recolectando pétalos* 🌷\n\n> *SAKURITA BOT 🌸*'
+global.listo = '*🌸 Aquí tienes Yallico 🌷*'
+global.namechannel = 'SAKURITA BOT 🌸'
 global.channel = 'https://whatsapp.com/channel/0029Vaua0ZD3gvWjQaIpSy18'
 
 global.rayo = fs.readFileSync('./storage/img/rayo.jpg')
@@ -115,6 +116,6 @@ global.APIKeys = {
 let file = fileURLToPath(import.meta.url)
 watchFile(file, () => {
   unwatchFile(file)
-  console.log(chalk.redBright("Update 'config.js'"))
+  console.log(chalk.redBright("🌸 Update 'config.js' SAKURITA 🌸"))
   import(`${file}?update=${Date.now()}`)
 })
