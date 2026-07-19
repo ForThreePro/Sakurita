@@ -17,116 +17,116 @@ handler.before = async function (m, { conn, groupMetadata }) {
 
     switch (m.messageStubType) {
         case 21: // Cambiar nombre
-            txt = `╭─❒ *『 𝗖𝗬𝗕𝗘𝗥 𝗕𝗢𝗧 』* ❒
-│ ⚡ *REGISTRO DEL SISTEMA*
+            txt = `🌸╭─── SAKURITA BOT ───╮🌸
+│ 🌷 *REGISTRO DEL JARDÍN*
 │
-│ 📢 *CAMBIO DE NOMBRE*
-│ 👤 *Usuario:* ${usuario}
+│ 📢 *NOMBRE CAMBIADO*
+│ 👤 *Jardinero:* ${usuario}
 │ 📝 *Nuevo:* _${m.messageStubParameters[0]}_
-│ 💻 *Grupo:* ${group}
+│ 💮 *Grupo:* ${group}
 │
-│ > *“Sistema renombrado correctamente”* 🤖
-╰─────────────────❒`; break
+│ > *“El jardín florece con nuevo nombre”* 🌸
+╰───────────────────────╯`; break
 
         case 22: // Cambiar foto
-            txt = `╭─❒ *『 𝗖𝗬𝗕𝗘𝗥 𝗕𝗢𝗧 』* ❒
-│ ⚡ *REGISTRO DEL SISTEMA*
+            txt = `🌸╭─── SAKURITA BOT ───╮🌸
+│ 🌷 *REGISTRO DEL JARDÍN*
 │
-│ 📸 *CAMBIO DE FOTO*
-│ 👤 *Usuario:* ${usuario}
+│ 📸 *FOTO CAMBIADA*
+│ 👤 *Jardinero:* ${usuario}
 │ 🖼️ *Nueva imagen establecida*
-│ 💻 *Grupo:* ${group}
+│ 💮 *Grupo:* ${group}
 │
-│ > *“Imagen actualizada en el sistema”* 🤖
-╰─────────────────❒`; break
+│ > *“El jardín se viste de nuevos pétalos”* 🌷
+╰───────────────────────╯`; break
 
         case 23: // Cambiar link
-            txt = `╭─❒ *『 𝗖𝗬𝗕𝗘𝗥 𝗕𝗢𝗧 』* ❒
-│ 🛡️ *ALERTA DE SEGURIDAD*
+            txt = `🌸╭─── SAKURITA BOT ───╮🌸
+│ 🛡️ *CUIDADO DEL JARDÍN*
 │
 │ 🔗 *LINK RESETEADO*
-│ 👤 *Usuario:* ${usuario}
-│ 💻 *Grupo:* ${group}
+│ 👤 *Jardinero:* ${usuario}
+│ 💮 *Grupo:* ${group}
 │
-│ > *“Protocolo de enlace modificado”* ⚡
-╰─────────────────❒`; break
+│ > *“El acceso al jardín fue renovado”* 🌸
+╰───────────────────────╯`; break
 
         case 25: // Cambiar ajustes
-            txt = `╭─❒ *『 𝗖𝗬𝗕𝗘𝗥 𝗕𝗢𝗧 』* ❒
-│ 🛡️ *AJUSTES MODIFICADOS*
+            txt = `🌸╭─── SAKURITA BOT ───╮🌸
+│ 🛡️ *AJUSTES DEL JARDÍN*
 │
-│ 👤 *Usuario:* ${usuario}
+│ 👤 *Jardinero:* ${usuario}
 │ ⚙️ *Permisos:* ${m.messageStubParameters[0] == 'on'? '*SOLO ADMINS* 🔒' : '*TODOS* 🔓'}
 │ 📊 *Edición de info de grupo*
 │
-│ > *“Permisos del sistema actualizados”* ⚡
-╰─────────────────❒`; break
+│ > *“Reglas del jardín actualizadas”* 🌷
+╰───────────────────────╯`; break
 
         case 26: // Abrir/Cerrar
-            txt = `╭─❒ *『 𝗖𝗬𝗕𝗘𝗥 𝗕𝗢𝗧 』* ❒
-│ 💻 *ESTADO DEL SISTEMA*
+            txt = `🌸╭─── SAKURITA BOT ───╮🌸
+│ 💮 *ESTADO DEL JARDÍN*
 │
-│ 👤 *Usuario:* ${usuario}
+│ 👤 *Jardinero:* ${usuario}
 │ 🗣️ *Modo:* ${m.messageStubParameters[0] == 'on'? '*SOLO ADMINS* 🔒' : '*TODOS* 🔓'}
 │ 📢 *Grupo:* ${m.messageStubParameters[0] == 'on'? 'CERRADO' : 'ABIERTO'}
 │
-│ > *“Modo de comunicación actualizado”* 🤖
-╰─────────────────❒`; break
+│ > *“Las puertas del jardín fueron actualizadas”* 🌸
+╰───────────────────────╯`; break
 
         case 29: // Dar admin
-            txt = `╭─❒ *『 𝗖𝗬𝗕𝗘𝗥 𝗕𝗢𝗧 』* ❒
-│ 👑 *ASCENSO DE RANGO*
+            txt = `🌸╭─── SAKURITA BOT ───╮🌸
+│ 👑 *NUEVO CUIDADOR*
 │
-│ ⚡ *Nuevo Admin:* @${m.messageStubParameters[0].split('@')[0]}
-│ 👤 *Otorgado por:* ${usuario}
-│ 💻 *Rango:* Administrador
+│ 🌷 *Nuevo Admin:* @${m.messageStubParameters[0].split('@')[0]}
+│ 👤 *Nombrado por:* ${usuario}
+│ 💮 *Rango:* Administrador
 │
-│ > *“Acceso de administrador concedido”* ⚡
-╰─────────────────❒`; break
+│ > *“Nuevo cuidador del jardín asignado”* 🌸
+╰───────────────────────╯`; break
 
         case 30: // Quitar admin
-            txt = `╭─❒ *『 𝗖𝗬𝗕𝗘𝗥 𝗕𝗢𝗧 』* ❒
-│ 📉 *RANGO REVOCADO*
+            txt = `🌸╭─── SAKURITA BOT ───╮🌸
+│ 🥀 *RANGO REVOCADO*
 │
 │ 💥 *Admin removido:* @${m.messageStubParameters[0].split('@')[0]}
 │ 👤 *Ejecutado por:* ${usuario}
 │ 🗑️ *Permisos eliminados*
 │
-│ > *“Acceso de administrador revocado”* ⚡
-╰─────────────────❒`; break
+│ > *“Cuidador removido del jardín”* 🌷
+╰───────────────────────╯`; break
 
         case WAMessageStubType.GROUP_PARTICIPANT_ADD:
-            txt = `╭─❒ *『 𝗖𝗬𝗕𝗘𝗥 𝗕𝗢𝗧 』* ❒
-│ 🤖 *NUEVO USUARIO CONECTADO*
+            txt = `🌸╭─── SAKURITA BOT ───╮🌸
+│ 💮 *NUEVA FLOR EN EL JARDÍN*
 │
-│ 🔥 *Bienvenido:* @${m.messageStubParameters[0].split('@')[0]}
-│ 💻 *Sistema:* ${group}
-│ ⚡ *Estado:* Conexión registrada
+│ 🌷 *Bienvenido:* @${m.messageStubParameters[0].split('@')[0]}
+│ 💮 *Jardín:* ${group}
+│ 🌸 *Estado:* Pétalo sembrado
 │
-│ > *“Nuevo nodo agregado al sistema”* ⚡
-╰─────────────────❒`; break
+│ > *“Un nuevo pétalo florece aquí”* 🌷
+╰───────────────────────╯`; break
 
         case WAMessageStubType.GROUP_PARTICIPANT_LEAVE:
-            txt = `╭─❒ *『 𝗖𝗬𝗕𝗘𝗥 𝗕𝗢𝗧 』* ❒
-│ 💨 *DESCONEXIÓN REGISTRADA*
+            txt = `🌸╭─── SAKURITA BOT ───╮🌸
+│ 🥀 *PÉTALO MARCHITO*
 │
 │ 😔 *Se fue:* @${m.messageStubParameters[0].split('@')[0]}
-│ 💻 *Sistema:* ${group}
-│ 🌫️ *Estado:* Abandonó el sistema
+│ 💮 *Jardín:* ${group}
+│ 🌫️ *Estado:* Abandonó el jardín
 │
-│ > *“Nodo desconectado”* 🤖
-╰─────────────────❒`; break
+│ > *“Un pétalo se desprendió”* 🌸
+╰───────────────────────╯`; break
 
         case WAMessageStubType.GROUP_PARTICIPANT_REMOVE:
-            txt = `╭─❒ *『 𝗖𝗬𝗕𝗘𝗥 𝗕𝗢𝗧 』* ❒
-│ 🚮 *EXPULSIÓN EJECUTADA*
+            txt = `🌸╭─── SAKURITA BOT ───╮🌸
+│ 🚮 *PÉTALO PODADO*
 │
-│ 💣 *Eliminado:* @${m.messageStubParameters[0].split('@')[0]}
+│ 💥 *Eliminado:* @${m.messageStubParameters[0].split('@')[0]}
 │ 👤 *Por orden de:* ${usuario}
-│ ⚡ *Causa:* Violación de protocolos
+│ 🌷 *Causa:* No cuidó el jardín
 │
-│ > *“Protocolo de seguridad aplicado”* 🤖
-╰─────────────────❒`; break
+│ > *“Protocolo de poda aplicado”* 🌸
+╰───────────────────────╯`; break
     }
 
     if (txt) {
