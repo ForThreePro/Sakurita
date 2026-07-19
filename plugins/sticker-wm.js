@@ -1,22 +1,22 @@
 import { addExif } from '../lib/sticker.js'
 
 let handler = async (m, { conn, text }) => {
-  if (!m.quoted) return conn.reply(m.chat, `💻 *CYBER BOT* ➔ Responde a un *sticker* para robarlo.`, m) // Cambiado
+  if (!m.quoted) return conn.reply(m.chat, `🌸 *SAKURITA BOT* ➔ Responde a un *pétalo* para reclamarlo.`, m) 
   let stiker = false
   try {
     let [packname, ...author] = text.split('|')
     author = (author || []).join('|')
     let mime = m.quoted.mimetype || ''
-    if (!/webp/.test(mime)) return conn.reply(m.chat, `💻 *CYBER BOT* ➔ Eso no es un *sticker*. Responde a un sticker.`, m) // Cambiado
+    if (!/webp/.test(mime)) return conn.reply(m.chat, `🌸 *SAKURITA BOT* ➔ Eso no es un *pétalo*. Responde a un pétalo.`, m) 
     let img = await m.quoted.download()
-    if (!img) return conn.reply(m.chat, `💻 *CYBER BOT* ➔ No pude descargar el *sticker*.`, m) // Cambiado
-    stiker = await addExif(img, packname || 'Cyber Bot', author || 'Whois Yallico') // Cambiado: marca por defecto
+    if (!img) return conn.reply(m.chat, `🌷 *SAKURITA BOT* ➔ No pude descargar el *pétalo*.`, m) 
+    stiker = await addExif(img, packname || 'Sakurita Bot', author || 'Whois Yallico') 
   } catch (e) {
     console.error(e)
     if (Buffer.isBuffer(e)) stiker = e
   } finally {
-    if (stiker) conn.sendFile(m.chat, stiker, 'wm.webp', '💻 *Cyber Bot* | Sticker reclamado', m) // Cambiado caption
-    else return conn.reply(m.chat, `💻 *CYBER BOT* ➔ Error al procesar el *sticker*.`, m) // Cambiado
+    if (stiker) conn.sendFile(m.chat, stiker, 'wm.webp', '🌸 *Sakurita Bot* | Pétalo reclamado', m) 
+    else return conn.reply(m.chat, `🥀 *SAKURITA BOT* ➔ Error al procesar el *pétalo*.`, m) 
   }
 }
 handler.help = ['wm <nombre>|<autor>']
