@@ -1,11 +1,11 @@
 const handler = async (m, { conn, text, command, isAdmin, isOwner }) => {
     if (!m.isGroup || (!isAdmin &&!isOwner)) {
-        return m.reply(`╭─❒ *『 𝗖𝗬𝗕𝗘𝗥 𝗕𝗢𝗧 』* ❒
-│ ❌ *ACCESO DENEGADO*
+        return m.reply(`🌸╭─── SAKURITA BOT ───╮🌸
+│ 🥀 *ACCESO AL JARDÍN DENEGADO*
 │
-│ ⚡ *Solo los admins o el dueño*
-│ 🤖 *pueden ejecutar este comando*
-╰─────────────────❒`);
+│ 🌷 *Solo los jardineros o el dueño*
+│ 🌸 *pueden ejecutar este comando*
+╰───────────────────────╯`);
     }
 
     let chat = global.db.data.chats[m.chat]
@@ -13,45 +13,45 @@ const handler = async (m, { conn, text, command, isAdmin, isOwner }) => {
     chat = global.db.data.chats[m.chat]
 
     if (command === 'setwelcome') {
-        if (!text) return m.reply(`╭─❒ *『 𝗖𝗬𝗕𝗘𝗥 𝗕𝗢𝗧 』* ❒
-│ 👋 *CONFIGURAR BIENVENIDA*
+        if (!text) return m.reply(`🌸╭─── SAKURITA BOT ───╮🌸
+│ 🌷 *CONFIGURAR BIENVENIDA*
 │
-│ ⚡ *Falta el mensaje*
+│ 🌸 *Falta el mensaje*
 │
 │ 📝 *Placeholders:*
 │ @user = Mención
-│ @group = Grupo  
-│ @count = Miembros
+│ @group = Jardín  
+│ @count = Pétalos
 │ @desc = Descripción
 │
 │ 💡 *Ejemplo:*
-│ .setwelcome ✅ @user se unió al servidor 💻
-│ 🤖 Bienvenido a @group
-│ 👥 Miembro #@count
-╰─────────────────❒`);
+│ .setwelcome 🌸 @user floreció en el jardín 🌷
+│ 🌷 Bienvenido a @group
+│ 👥 Pétalo #@count
+╰───────────────────────╯`);
         chat.customWelcome = text.trim();
-        return m.reply(`╭─❒ *『 𝗖𝗬𝗕𝗘𝗥 𝗕𝗢𝗧 』* ❒
+        return m.reply(`🌸╭─── SAKURITA BOT ───╮🌸
 │ ✅ *BIENVENIDA GUARDADA*
 │
 │ 📝 *Vista previa:*
 │ \`\`${text.trim()}\`\`
 │
 │ 🗑️ *Para borrar:* .delwelcome
-╰─────────────────❒`);
+╰───────────────────────╯`);
     }
     if (command === 'delwelcome') {
-        if (!chat.customWelcome) return m.reply(`╭─❒ *『 𝗖𝗬𝗕𝗘𝗥 𝗕𝗢𝗧 』* ❒
-│ ⚠️ *SIN BIENVENIDA*
+        if (!chat.customWelcome) return m.reply(`🌸╭─── SAKURITA BOT ───╮🌸
+│ 🥀 *SIN BIENVENIDA*
 │
-│ 🤖 *No tienes una bienvenida editada*
-╰─────────────────❒`);
+│ 🌷 *No tienes una bienvenida editada*
+╰───────────────────────╯`);
         delete chat.customWelcome;
-        return m.reply(`╭─❒ *『 𝗖𝗬𝗕𝗘𝗥 𝗕𝗢𝗧 』* ❒
+        return m.reply(`🌸╭─── SAKURITA BOT ───╮🌸
 │ ✅ *BIENVENIDA ELIMINADA*
 │
-│ 🗑️ *Se borró el mensaje personalizado*
-│ 💻 *Ahora se usa la de welcome.js*
-╰─────────────────❒`);
+│ 🗑️ *Se podó el mensaje personalizado*
+│ 🌸 *Ahora se usa la de welcome.js*
+╰───────────────────────╯`);
     }
 };
 handler.help = ['setwelcome <mensaje>', 'delwelcome'];
