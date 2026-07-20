@@ -67,7 +67,7 @@ handler.before = async function (m, { conn }) {
         let pp = await conn.profilePictureUrl(realJid, 'image')
         img = await fetch(pp).then(v => v.buffer())
     } catch {
-        img = await fetch('https://i.imgur.com/4kC8R2B.jpg').then(v => v.buffer()).catch(() => null) // img sakura default
+        img = await fetch('https://files.evogb.win/g05QLK.jpg').then(v => v.buffer()).catch(() => null) // img sakura default
     }
 
     let txt = ''
