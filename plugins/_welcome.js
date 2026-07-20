@@ -76,7 +76,7 @@ handler.before = async function (m, { conn }) {
     // WELCOME
     if (m.messageStubType === WAMessageStubType.GROUP_PARTICIPANT_ADD) {
         if (chat.welcome == false) return
-        audio = 'sakura-bienvenida.mp3' // ponle este nombre a tu audio
+        audio = 'bienvenida.mp3' // ponle este nombre a tu audio
         txt = `╭─ 🌸 *Bienvenid@ al Jardín* 🌸 ─╮
 │
 │ ✨ *Almita nueva:* ${user}
@@ -92,7 +92,7 @@ handler.before = async function (m, { conn }) {
     // BYE
     if (m.messageStubType === WAMessageStubType.GROUP_PARTICIPANT_LEAVE) {
         if (chat.bye == false) return
-        audio = 'sakura-despedida.mp3'
+        audio = 'despedida.mp3'
         txt = `╭─ 🥀 *Un pétalo se va* 🥀 ─╮
 │
 │ 💧 *Almita:* ${user}
@@ -107,7 +107,7 @@ handler.before = async function (m, { conn }) {
     // KICK
     if (m.messageStubType === WAMessageStubType.GROUP_PARTICIPANT_REMOVE) {
         if (chat.kick == false) return
-        audio = 'sakura-kick.mp3'
+        audio = 'kick.mp3'
         txt = `╭─ ⚡ *Flor marchita* ⚡ ─╮
 │
 │ 🥀 *Almita:* ${user}
