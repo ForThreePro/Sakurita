@@ -22,14 +22,17 @@ let handler = async (m, { conn, command, args }) => {
 │ 3. Expulsiones : ${k}
 │
 │ *Comandos*
-│.welcome on/off
-│.bye on/off
-│.kick on/off
+│.on welcome /.off welcome
+│.on bye /.off bye
+│.on kick /.off kick
 │
 ╰─────────────────────────╯`, m)
     }
 
-    chat[command] = args[0].toLowerCase() === 'on'
+    let accion = args[0].toLowerCase()
+    if (accion!== 'on' && accion!== 'off') return m.reply('🌸 Usa:.on welcome o.off welcome nya~')
+
+    chat[command] = accion === 'on'
     let icon = chat[command]? '🌸' : '🥀'
     let nombre = command === 'welcome'? 'Bienvenidas' : command === 'bye'? 'Despedidas' : 'Expulsiones'
     m.reply(`${icon} *${nombre}* ${chat[command]? 'activadas nya~' : 'desactivadas...'}`)
@@ -67,7 +70,7 @@ handler.before = async function (m, { conn }) {
         let pp = await conn.profilePictureUrl(realJid, 'image')
         img = await fetch(pp).then(v => v.buffer())
     } catch {
-        img = await fetch('https://files.evogb.win/g05QLK.jpg').then(v => v.buffer()).catch(() => null) // img sakura default
+        img = await fetch('https://files.evogb.win/g05QLK.jpg').then(v => v.buffer()).catch(() => null)
     }
 
     let txt = ''
@@ -76,7 +79,7 @@ handler.before = async function (m, { conn }) {
     // WELCOME
     if (m.messageStubType === WAMessageStubType.GROUP_PARTICIPANT_ADD) {
         if (chat.welcome == false) return
-        audio = 'bienvenida.mp3' // ponle este nombre a tu audio
+        audio = 'bienvenida.mp3'
         txt = `╭─ 🌸 *Bienvenid@ al Jardín* 🌸 ─╮
 │
 │ ✨ *Almita nueva:* ${user}
