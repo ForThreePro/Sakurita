@@ -9,7 +9,8 @@ let handler = async (m, { conn, command, args }) => {
     if (!global.db.data.chats[m.chat]) global.db.data.chats[m.chat] = {}
     let chat = global.db.data.chats[m.chat]
 
-    if (!args[0]) {
+    // Ahora command = on/off y args[0] = welcome/bye/kick
+    if (!command ||!args[0]) {
         let w = chat.welcome? '🌸 ON' : '🥀 OFF'
         let b = chat.bye? '🌸 ON' : '🥀 OFF'
         let k = chat.kick? '🌸 ON' : '🥀 OFF'
@@ -29,15 +30,20 @@ let handler = async (m, { conn, command, args }) => {
 ╰─────────────────────────╯`, m)
     }
 
-    let accion = args[0].toLowerCase()
-    if (accion!== 'on' && accion!== 'off') return m.reply('🌸 Usa:.on welcome o.off welcome nya~')
+    let accion = command.toLowerCase()
+    let tipo = args[0].toLowerCase()
 
-    chat[command] = accion === 'on'
-    let icon = chat[command]? '🌸' : '🥀'
-    let nombre = command === 'welcome'? 'Bienvenidas' : command === 'bye'? 'Despedidas' : 'Expulsiones'
-    m.reply(`${icon} *${nombre}* ${chat[command]? 'activadas nya~' : 'desactivadas...'}`)
+    if (accion!== 'on' && accion!== 'off') return m.reply('🌸 Usa:.on welcome o.off welcome nya~')
+    if (!['welcome','bye','kick'].includes(tipo)) return m.reply('🌸 Tipo inválido. Usa: welcome, bye, kick nya~')
+
+    chat[tipo] = accion === 'on'
+    let icon = chat[tipo]? '🌸' : '🥀'
+    let nombre = tipo === 'welcome'? 'Bienvenidas' : tipo === 'bye'? 'Despedidas' : 'Expulsiones'
+    m.reply(`${icon} *${nombre}* ${chat[tipo]? 'activadas nya~' : 'desactivadas...'}`)
 }
-handler.command = /^(welcome|bye|kick)$/i
+handler.command = /^(on|off)$/i // <- AQUI ESTABA EL ERROR
+handler.help = ['on/off welcome', 'on/off bye', 'on/off kick']
+handler.tags = ['welcome']
 handler.admin = true
 handler.group = true
 export default handler
